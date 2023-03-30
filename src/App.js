@@ -5,6 +5,7 @@ import ContactPage from './pages/ContactPage';
 import GalleryPage from './pages/GalleryPage';
 import LandingPage from './pages/LandingPage';
 import NewsPage from './pages/NewsPage';
+import PageNotFound from './pages/PageNotFound';
 import ProfilePage from './pages/ProfilePage';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/berita-terbaru" element={<NewsPage />} />
           <Route path="/agenda-kegiatan-desa" element={<AgendaActivitiesPage />} />
           <Route path="/kontak" element={<ContactPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </div>
