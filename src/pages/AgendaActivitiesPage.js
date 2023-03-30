@@ -2,25 +2,21 @@ import React from 'react';
 import Header from '../components/Header';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Breadcrumb from '../components/Breadcrumb';
-import ImageGallery from '../components/ImageGallery';
-import imageData from '../json/galleryPage.json';
 
-export default function GalleryPage() {
+export default function AgendaActivitiesPage() {
   const links = [
     { name: 'Home', path: '/' },
-    { name: 'Galeri Desa', path: '/galeri-desa' },
+    { name: 'Agenda Kegiatan Desa', path: '/agenda-kegiatan-desa' },
   ];
-
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>Galeri Desa - BRIliant</title>
+          <title>Agenda Kegiatan Desa - BRIliant</title>
         </Helmet>
       </HelmetProvider>
       <Header />
       <Breadcrumb links={links} />
-      <ImageGallery images={imageData.imageGallery} />
     </>
   );
 }
