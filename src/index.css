@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+.nav-link {
+  position: relative;
+}
+
+.nav-link::before {
+  transition: 300ms;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: #014a94;
+}
+
+.nav-link-ltr::before {
+  width: 0%;
+  bottom: 0px;
+}
+
+.nav-link-ltr:hover::before {
+  width: 100%;
+}
+
+// Carousel
+
 .carousel {
   height: 700px;
 }
