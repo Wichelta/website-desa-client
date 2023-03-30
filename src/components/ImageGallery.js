@@ -46,9 +46,6 @@ export default function ImageGallery({ images }) {
                 alt={image.alt}
                 className="h-72 w-full object-cover brightness-75 duration-300 hover:ease-in-out group-hover:brightness-100"
               />
-              <p className="absolute inset-0 flex items-center justify-center text-3xl text-white opacity-0 transition-opacity group-hover:opacity-100">
-                {image.title}
-              </p>
             </div>
           </div>
         ))}
