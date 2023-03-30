@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import ImageModalGallery from "./ImageModalGallery";
+import React, { useState } from 'react';
+import ImageModalGallery from './ImageModalGallery';
 
 export default function ImageGallery({ images }) {
   const PAGE_SIZE = 6;
-  const [displayedImages, setDisplayedImages] = useState(
-    images.slice(0, PAGE_SIZE)
-  );
+  const [displayedImages, setDisplayedImages] = useState(images.slice(0, PAGE_SIZE));
   const [pagination, setPagination] = useState(1);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
@@ -26,9 +24,7 @@ export default function ImageGallery({ images }) {
   };
 
   const handlePrevClick = () => {
-    setSelectedImageIndex(
-      (selectedImageIndex - 1 + images.length) % images.length
-    );
+    setSelectedImageIndex((selectedImageIndex - 1 + images.length) % images.length);
   };
 
   const handleNextClick = () => {
@@ -36,12 +32,12 @@ export default function ImageGallery({ images }) {
   };
 
   return (
-    <div className="mx-auto max-w-screen-xl px-4 py-5 sm:px-6 lg:px-7">
+    <div className="mx-auto mt-40 max-w-screen-xl px-4 py-5 sm:px-6 lg:px-7">
       <div className="flex flex-col gap-6 md:grid md:grid-cols-3">
         {displayedImages.map((image, index) => (
           <div
             key={index}
-            className="relative bg-black shadow-md transition-shadow duration-300 hover:shadow-lg"
+            className="relative cursor-pointer bg-black shadow-md transition-shadow duration-300 hover:shadow-lg"
             onClick={() => handleImageClick(index)}
           >
             <div className="group">

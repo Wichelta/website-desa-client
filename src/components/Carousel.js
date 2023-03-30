@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import ImgCarousel1 from "../assets/images/img_carousel_1.jpg";
-import ImgCarousel2 from "../assets/images/img_carousel_2.jpg";
-import ImgCarousel3 from "../assets/images/img_carousel_3.jpg";
+import React, { useState } from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import ImgCarousel1 from '../assets/images/img_carousel_1.jpg';
+import ImgCarousel2 from '../assets/images/img_carousel_2.jpg';
+import ImgCarousel3 from '../assets/images/img_carousel_3.jpg';
 
 export default function CarouselImg() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -32,15 +32,13 @@ export default function CarouselImg() {
                 className="carousel-image select-none object-cover brightness-75"
               />
               <div className="carousel-text-container w-80 md:w-auto">
-                <h2 className="mb-5 text-4xl font-bold md:text-6xl">
-                  Selamat Datang
-                </h2>
+                <h2 className="mb-5 text-4xl font-bold md:text-6xl">Selamat Datang</h2>
                 <p className="mb-6 text-lg md:text-2xl">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  auctor velit at erat dictum mollis.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor velit at erat
+                  dictum mollis.
                 </p>
                 <button className="select-none rounded bg-sky-900 px-7 py-3 font-bold text-white hover:bg-sky-950">
-                  Jelajahi
+                  Jelajahi <span aria-hidden="true">→</span>
                 </button>
               </div>
             </div>
