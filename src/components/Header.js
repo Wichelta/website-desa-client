@@ -101,7 +101,7 @@ export default function Example() {
             Galeri Desa
           </a>
           <Popover className="relative">
-            <Popover.Button className="nav-link nav-link-ltr group flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out">
+            <Popover.Button className="nav-link nav-link-ltr group flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 outline-none transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out">
               Informasi Seputar Desa
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400 transition duration-300 ease-in-out group-hover:text-blue-primary group-hover:ease-in-out"
