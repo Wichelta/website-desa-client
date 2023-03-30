@@ -1,14 +1,22 @@
 import React from "react";
 import Header from "../components/Header";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default function ContactPage() {
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Hubungi Kami", path: "/kontak" },
+  ];
   return (
     <>
-      <Helmet>
-        <title>Kontak - BRIliant</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>Kontak - BRIliant</title>
+        </Helmet>
+      </HelmetProvider>
       <Header />
+      <Breadcrumb links={links} />
     </>
   );
 }

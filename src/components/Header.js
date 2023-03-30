@@ -1,57 +1,74 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import Logo from "../assets/icons/logo.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) => {
+    return location.pathname === path
+      ? "text-blue-primary underline"
+      : "text-gray-600";
+  };
 
   return (
-    <nav className="bg-white shadow-lg navbar fixed py-2 top-0 left-0 right-0 z-50">
-      <div className="mx-auto px-4 py-2 max-w-7xl">
+    <nav className="navbar fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-white py-2">
+      <div className="mx-auto max-w-screen-xl px-6 py-2">
         <div className="flex justify-between">
           <div className="flex">
             <Link to="/">
               <img src={Logo} alt="Brand Logo" className="w-40 select-none" />
             </Link>
           </div>
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden items-center space-x-6 lg:flex">
             <Link
               to="/"
-              className="text-gray-600 font-medium hover:text-sky-900 hover:underline decoration-sky-950"
+              className={`font-medium decoration-blue-primary hover:text-blue-primary hover:underline ${isActive(
+                "/"
+              )}`}
             >
               HOME
             </Link>
             <Link
               to="/profil-desa"
-              className="text-gray-600 font-medium hover:text-sky-950 hover:underline decoration-sky-950"
+              className={`font-medium decoration-blue-primary hover:text-blue-primary hover:underline ${isActive(
+                "/profil-desa"
+              )}`}
             >
               PROFIL DESA
             </Link>
             <Link
               to="/galeri-desa"
-              className="text-gray-600 font-medium hover:text-sky-950 hover:underline decoration-sky-950"
+              className={`font-medium decoration-blue-primary hover:text-blue-primary hover:underline ${isActive(
+                "/galeri-desa"
+              )}`}
             >
               GALERI DESA
             </Link>
             <Link
               to="/berita-seputar-desa"
-              className="text-gray-600 font-medium hover:text-sky-950 hover:underline decoration-sky-950"
+              className={`font-medium decoration-blue-primary hover:text-blue-primary hover:underline ${isActive(
+                "/berita-seputar-desa"
+              )}`}
             >
               BERITA SEPUTAR DESA
             </Link>
             <Link
               to="/kontak"
-              className="text-gray-600 font-medium hover:text-sky-950 hover:underline decoration-sky-950"
+              className={`font-medium decoration-blue-primary hover:text-blue-primary hover:underline ${isActive(
+                "/kontak"
+              )}`}
             >
               HUBUNGI KAMI
             </Link>
           </div>
-          <div className="lg:hidden flex items-center">
+          <div className="flex items-center lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-primary focus:ring-offset-2 focus:ring-offset-gray-100"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -99,34 +116,44 @@ export default function Header() {
       >
         {(ref) => (
           <div className="lg:hidden" id="mobile-menu">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
               <Link
                 to="/"
-                className="text-gray-600 hover:text-sky-950 block px-3 py-2 rounded-md text-base font-medium"
+                className={`block rounded-md px-3 py-2 text-base font-medium hover:text-blue-primary ${isActive(
+                  "/"
+                )}`}
               >
                 HOME
               </Link>
               <Link
                 to="/profil-desa"
-                className="text-gray-600 hover:text-sky-950 block px-3 py-2 rounded-md text-base font-medium"
+                className={`block rounded-md px-3 py-2 text-base font-medium hover:text-blue-primary ${isActive(
+                  "/profil-desa"
+                )}`}
               >
                 PROFIL DESA
               </Link>
               <Link
                 to="/galeri-desa"
-                className="text-gray-600 hover:text-sky-950 block px-3 py-2 rounded-md text-base font-medium"
+                className={`block rounded-md px-3 py-2 text-base font-medium hover:text-blue-primary ${isActive(
+                  "/galeri-desa"
+                )}`}
               >
                 GALERI DESA
               </Link>
               <Link
                 to="/berita-seputar-desa"
-                className="text-gray-600 hover:text-sky-950 block px-3 py-2 rounded-md text-base font-medium"
+                className={`block rounded-md px-3 py-2 text-base font-medium hover:text-blue-primary ${isActive(
+                  "/berita-seputar-desa"
+                )}`}
               >
                 BERITA SEPUTAR DESA
               </Link>
               <Link
                 to="/kontak"
-                className="text-gray-600 hover:text-sky-950 block px-3 py-2 rounded-md text-base font-medium"
+                className={`block rounded-md px-3 py-2 text-base font-medium hover:text-blue-primary ${isActive(
+                  "/kontak"
+                )}`}
               >
                 HUBUNGI KAMI
               </Link>
