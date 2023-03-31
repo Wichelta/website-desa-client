@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 export default function ImageModalGallery({ image, onClose, onPrev, onNext }) {
   useEffect(() => {
@@ -19,13 +20,19 @@ export default function ImageModalGallery({ image, onClose, onPrev, onNext }) {
     };
   }, [onClose, onPrev, onNext]);
 
+  const handlers = useSwipeable({
+    onSwipedLeft: onNext,
+    onSwipedRight: onPrev,
+    preventDefaultTouchmoveEvent: true,
+  });
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex min-h-screen items-center justify-center p-5">
         <div className="fixed inset-0  bg-gray-900 opacity-50" onClick={onClose}></div>
-        <div className="relative overflow-hidden rounded-md bg-white">
-          <div className="flex items-center justify-between bg-white px-4 py-2">
-            <h2 className="w-[900px] overflow-hidden whitespace-nowrap text-lg font-medium text-gray-900">
+        <div className="relative overflow-hidden rounded-lg bg-white" {...handlers}>
+          <div className="flex items-center justify-between bg-white px-4 py-2 md:py-3">
+            <h2 className="w-[900px] overflow-hidden whitespace-nowrap text-base font-medium text-gray-900 md:text-lg">
               {image.title}
             </h2>
             <button
@@ -34,7 +41,7 @@ export default function ImageModalGallery({ image, onClose, onPrev, onNext }) {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-5 w-5 md:h-6 md:w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
