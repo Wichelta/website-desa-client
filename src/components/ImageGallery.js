@@ -28,11 +28,6 @@ export default function ImageGallery({ images }) {
     setTimeout(() => setIsLoading(false), 300);
   }, [sortOrder, images]);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   setTimeout(() => setIsLoading(false), 300);
-  // }, [displayedImages]);
-
   const handleShowMore = () => {
     const startIndex = pagination * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
@@ -54,14 +49,14 @@ export default function ImageGallery({ images }) {
     if (selectedImageIndex === 0) {
       return;
     }
-    setSelectedImageIndex((selectedImageIndex - 1) % images.length);
+    setSelectedImageIndex(selectedImageIndex - 1);
   };
 
   const handleNextClick = () => {
     if (selectedImageIndex === images.length - 1) {
       return;
     }
-    setSelectedImageIndex((selectedImageIndex + 1) % images.length);
+    setSelectedImageIndex(selectedImageIndex + 1);
   };
 
   const handleSortOrderChange = (order) => {
@@ -84,7 +79,7 @@ export default function ImageGallery({ images }) {
               </Listbox.Button>
               <Transition
                 as={Fragment}
-                leave="transition ease-in duration-100"
+                leave="transition ease-in-out duration-300"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
@@ -146,15 +141,11 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
         ) : (
           <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
             {displayedImages.map((image, index) => (
-              <div
-                key={index}
-                onClick={() => handleImageClick(index)}
-                className="group relative cursor-pointer bg-black shadow-md transition-shadow duration-300 hover:shadow-lg"
-              >
+              <div key={index} onClick={() => handleImageClick(index)}>
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="h-72 w-full object-cover brightness-75 duration-300 hover:ease-in-out group-hover:brightness-100"
+                  className="h-72 w-full cursor-pointer object-cover duration-300 hover:brightness-50 hover:ease-in-out"
                 />
               </div>
             ))}
@@ -197,6 +188,8 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
           onClose={handleCloseModal}
           onPrev={handlePrevClick}
           onNext={handleNextClick}
+          startImageNumber={selectedImageIndex + 1}
+          endImageNumber={images.length}
         />
       )}
     </div>

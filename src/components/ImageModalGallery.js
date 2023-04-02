@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
-export default function ImageModalGallery({ image, onClose, onPrev, onNext }) {
+export default function ImageModalGallery({
+  image,
+  onClose,
+  onPrev,
+  onNext,
+  startImageNumber,
+  endImageNumber,
+}) {
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape') {
@@ -29,19 +36,24 @@ export default function ImageModalGallery({ image, onClose, onPrev, onNext }) {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex min-h-screen items-center justify-center p-5">
-        <div className="fixed inset-0  bg-gray-900 opacity-50" onClick={onClose}></div>
-        <div className="relative overflow-hidden rounded-lg bg-white" {...handlers}>
-          <div className="flex items-center justify-between bg-white px-4 py-2 md:py-3">
-            <h2 className="w-[900px] overflow-hidden whitespace-nowrap text-base font-medium text-gray-900 md:text-lg">
-              {image.title}
-            </h2>
+        <div className="fixed inset-0 bg-black bg-opacity-80" onClick={onClose}></div>
+        <div className="fixed left-0 right-0 top-0 z-50 flex h-20 w-full items-center justify-center bg-black bg-opacity-60 px-4 py-2 md:py-3">
+          <div className="flex w-full xl:max-w-7xl">
+            <div className="flex w-full flex-col justify-between overflow-hidden whitespace-nowrap p-1">
+              <h2 className="text-lg font-medium capitalize text-gray-300 md:text-2xl">
+                {image.title}
+              </h2>
+              <p className="text-sm text-gray-500 md:text-base">
+                Image {startImageNumber} of {endImageNumber}
+              </p>
+            </div>
             <button
               onClick={onClose}
-              className="text-gray-900 hover:text-blue-primary focus:outline-none"
+              className="p-1 text-gray-400 hover:text-gray-50 focus:outline-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 md:h-6 md:w-6"
+                className="h-6 w-6 md:h-9 md:w-9"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -55,38 +67,44 @@ export default function ImageModalGallery({ image, onClose, onPrev, onNext }) {
               </svg>
             </button>
           </div>
-          <button
-            onClick={onPrev}
-            className="absolute left-0 top-1/2 z-10 ml-2 transform rounded-full bg-white bg-opacity-50 p-1 text-gray-800 hover:bg-opacity-75 hover:text-blue-primary focus:outline-none sm:-translate-y-1/2 sm:p-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-          </button>
-          <button
-            onClick={onNext}
-            className="absolute right-0 top-1/2 z-10 mr-2 transform rounded-full bg-white bg-opacity-50 p-1 text-gray-800 hover:bg-opacity-75 hover:text-blue-primary focus:outline-none sm:-translate-y-1/2 sm:p-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
-          <img src={image.src} alt={image.alt} className="w-[1000px]" />
         </div>
+        <img
+          className="z-50 mt-20 max-h-[80vh] touch-pinch-zoom xl:max-w-screen-xl"
+          src={image.src}
+          alt={image.alt}
+          {...handlers}
+        />
+
+        <button
+          onClick={onPrev}
+          className="absolute left-0 top-1/2 z-50 ml-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none md:mt-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="h-8 w-8 md:h-10 md:w-10"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <button
+          onClick={onNext}
+          className="absolute right-0 top-1/2 z-50 mr-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none md:mt-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="h-8 w-8 md:h-10 md:w-10"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
       </div>
     </div>
   );
