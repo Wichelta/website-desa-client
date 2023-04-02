@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .nav-link {
   position: relative;
 }
@@ -25,15 +29,6 @@
 
 // Carousel
 
-.carousel {
-  height: 700px;
-}
-
-.carousel-image-container {
-  position: relative;
-  height: 700px;
-}
-
 .carousel-image {
   object-fit: cover;
   height: 100%;
@@ -48,6 +43,5 @@
   text-align: center;
   color: #fff;
   z-index: 1;
-  max-width: 1000px;
   padding: 2rem;
 }
