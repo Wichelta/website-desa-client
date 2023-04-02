@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon, NewspaperIcon, CalendarDaysIcon } from '@heroicon
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import Logo from '../assets/icons/logo.png';
 
-const products = [
+const listInformasi = [
   {
     name: 'Berita Terbaru',
     href: '/berita-terbaru',
@@ -120,7 +120,7 @@ export default function Example() {
             >
               <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-xs overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                 <div className="p-4">
-                  {products.map((item) => (
+                  {listInformasi.map((item) => (
                     <div
                       key={item.name}
                       className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
@@ -212,7 +212,7 @@ export default function Example() {
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        {[...products].map((item) => (
+                        {[...listInformasi].map((item) => (
                           <Disclosure.Button
                             key={item.name}
                             as="a"
