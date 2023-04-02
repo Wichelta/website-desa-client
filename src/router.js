@@ -6,6 +6,7 @@ import LandingPage from './pages/LandingPage';
 import NewsPage from './pages/NewsPage';
 import PageNotFound from './pages/PageNotFound';
 import ProfilePage from './pages/ProfilePage';
+import Example from './pages/Example';
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
     <Route path="/berita-terbaru" element={<NewsPage />} />,
     <Route path="/agenda-kegiatan-desa" element={<AgendaActivitiesPage />} />,
     <Route path="/kontak" element={<ContactPage />} />,
+    <Route path="/example" element={<Example />} />,
   ]),
 );
 
