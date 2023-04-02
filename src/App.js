@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage';
 import NewsPage from './pages/NewsPage';
 import PageNotFound from './pages/PageNotFound';
 import ProfilePage from './pages/ProfilePage';
+import Example from './pages/Example';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/agenda-kegiatan-desa" element={<AgendaActivitiesPage />} />
           <Route path="/kontak" element={<ContactPage />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/example" element={<Example />} />
         </Routes>
       </Router>
     </div>
