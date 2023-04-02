@@ -15,7 +15,7 @@ export default function CarouselImg() {
   const images = [ImgCarousel1, ImgCarousel2, ImgCarousel3];
 
   return (
-    <div className="carousel-container mt-20">
+    <div className="carousel-container">
       <Carousel
         showThumbs={false}
         selectedItem={selectedIndex}
@@ -29,15 +29,15 @@ export default function CarouselImg() {
               <img
                 src={image}
                 alt={`Slide ${index}`}
-                className="carousel-image select-none object-cover brightness-75"
+                className="carousel-image h-screen select-none object-cover brightness-50"
               />
-              <div className="carousel-text-container flex w-80 flex-col gap-5 md:w-auto">
+              <div className="carousel-text-container mt-5 flex w-full flex-col gap-5 md:max-w-5xl">
                 <h2 className="text-4xl font-bold md:text-6xl">Selamat Datang</h2>
-                <p className="text-lg md:text-2xl">
+                <p className="max-w-md self-center text-lg md:max-w-2xl md:text-2xl lg:max-w-full">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor velit at erat
                   dictum mollis.
                 </p>
-                <button className="w-max select-none self-center rounded bg-sky-900 px-7 py-3 font-bold text-white hover:bg-sky-950">
+                <button className="w-max select-none self-center rounded-md bg-blue-primary px-5 py-2 font-bold text-white hover:bg-sky-950">
                   Jelajahi <span aria-hidden="true">→</span>
                 </button>
               </div>
