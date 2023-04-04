@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '../components/Header';
-import Profile from '../components/Profile';
+import Profile from '../components/Profile/ProfileDetails';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Breadcrumb from '../components/Breadcrumb';
-import dataProfile from '../json/profilePage.json';
+import data from '../json/profileData.json';
 
 export default function ProfilePage() {
   const links = [
@@ -20,7 +20,7 @@ export default function ProfilePage() {
       </HelmetProvider>
       <Breadcrumb links={links} />
       <Header />
-      <Profile data={dataProfile.profile} />
+      <Profile data={data.profileData} />
     </>
   );
 }
