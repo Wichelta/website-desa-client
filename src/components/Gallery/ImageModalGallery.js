@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Fade } from 'react-awesome-reveal';
 import { useSwipeable } from 'react-swipeable';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 
