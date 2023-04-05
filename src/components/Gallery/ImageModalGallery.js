@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { useSwipeable } from 'react-swipeable';
+import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
+
+// Todo : Add a Popover from headlessui (Icon Information) to show the image details (title, dateCreated, caption)
 
 export default function ImageModalGallery({
   image,
@@ -52,60 +55,27 @@ export default function ImageModalGallery({
               onClick={onClose}
               className="p-1 text-gray-400 hover:text-gray-50 focus:outline-none"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 md:h-9 md:w-9"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <XMarkIcon aria-hidden="true" className="h-6 w-6 md:h-9 md:w-9" />
             </button>
           </div>
         </div>
-        <Fade>
-          <img
-            className="z-50 mt-20 max-h-[80vh] touch-pinch-zoom xl:max-w-screen-xl xl:p-2"
-            src={image.src}
-            alt={image.alt}
-            {...handlers}
-          />
-        </Fade>
+        <img
+          className="z-50 mt-20 max-h-[80vh] touch-pinch-zoom xl:max-w-screen-xl xl:p-2"
+          src={image.src}
+          alt={image.alt}
+          {...handlers}
+        />
         <button
           onClick={onPrev}
           className="absolute left-0 top-1/2 z-50 ml-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none lg:mt-3"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="h-8 w-8 md:h-10 md:w-10"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
+          <ChevronLeftIcon aria-hidden="true" className="h-8 w-8 md:h-10 md:w-10" />
         </button>
         <button
           onClick={onNext}
           className="absolute right-0 top-1/2 z-50 mr-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none lg:mt-3"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="h-8 w-8 md:h-10 md:w-10"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
+          <ChevronRightIcon aria-hidden="true" className="h-8 w-8 md:h-10 md:w-10" />
         </button>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Fade } from 'react-awesome-reveal';
-import { CalendarDaysIcon } from '@heroicons/react/24/solid';
+import { CalendarDaysIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid';
 
 export default function LatestNews({ data }) {
   const [displayedNews, setDisplayedNews] = useState([]);
@@ -29,9 +29,7 @@ export default function LatestNews({ data }) {
     <Fade direction="up" triggerOnce>
       <div className="container mx-auto mt-40 max-w-screen-xl px-2 py-5 xs:px-3">
         <div className="mb-1 flex flex-col items-center gap-2 py-4">
-          <h2 className="text-2xl font-bold tracking-wide text-gray-900 sm:text-3xl">
-            Berita Terkini
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Berita Terkini</h2>
           <p className="text-sm text-gray-500 sm:text-base">Seputar Berita Di Desa</p>
         </div>
         <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
@@ -68,20 +66,10 @@ export default function LatestNews({ data }) {
                         onClick={() => console.log('Read more clicked')}
                       >
                         Baca selengkapnya
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
+                        <ArrowLongRightIcon
                           className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                          />
-                        </svg>
+                          aria-hidden="true"
+                        />
                       </button>
                     </div>
                   </div>

@@ -2,7 +2,12 @@ import React, { useState, useEffect, Fragment } from 'react';
 import ImageModalGallery from './ImageModalGallery';
 import { Listbox, Transition } from '@headlessui/react';
 import { BarLoader } from 'react-spinners';
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
+import {
+  CheckIcon,
+  ChevronUpDownIcon,
+  ChevronDownIcon,
+  ArrowsPointingOutIcon,
+} from '@heroicons/react/20/solid';
 import { Fade } from 'react-awesome-reveal';
 
 export default function ImageGallery({ data }) {
@@ -147,11 +152,20 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
             {displayedImages.map((image, index) => (
               <div key={index} onClick={() => handleImageClick(index)}>
                 <Fade delay={100 * index} triggerOnce>
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="h-72 w-full cursor-pointer object-cover duration-300 hover:brightness-50 hover:ease-in-out"
-                  />
+                  <div className="group relative cursor-pointer">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="h-72 w-full object-cover duration-300 group-hover:brightness-50 group-hover:ease-in-out"
+                    />
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
+                      <div className="relative h-10 w-10">
+                        <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center text-white">
+                          <ArrowsPointingOutIcon aria-hidden="true" className="h-6 w-6" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </Fade>
               </div>
             ))}
@@ -165,24 +179,10 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
                 className="group col-span-3 m-auto flex w-52 flex-col items-center justify-center text-center text-gray-500 underline hover:text-blue-primary"
               >
                 Tampilkan lebih banyak
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 group-hover:stroke-blue-primary"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    fill="none"
-                    stroke="#000"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeMiterlimit="10"
-                    strokeWidth="2"
-                    d="m20.5 11.5-6 6-6-6"
-                    className="group-hover:animate-bounce group-hover:stroke-blue-primary"
-                  ></path>
-                </svg>
+                <ChevronDownIcon
+                  className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
+                  aria-hidden="true"
+                />
               </button>
             )}
           </div>
