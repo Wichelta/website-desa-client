@@ -61,13 +61,27 @@ export default function LatestNews({ data }) {
                         </span>
                       </div>
                       <p className="text-sm text-gray-700 sm:text-base">
-                        {truncateDescription(news.description)}{' '}
+                        {truncateDescription(news.description)}
                       </p>
                       <button
-                        className="static bottom-0 w-max self-end text-blue-primary hover:underline md:absolute md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
+                        className="group static bottom-0 w-max self-end text-blue-primary hover:underline md:absolute md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
                         onClick={() => console.log('Read more clicked')}
                       >
-                        Baca selengkapnya...
+                        Baca selengkapnya
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                          />
+                        </svg>
                       </button>
                     </div>
                   </div>
