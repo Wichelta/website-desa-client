@@ -8,8 +8,8 @@ import { Fade } from 'react-awesome-reveal';
 
 const listInformasi = [
   {
-    name: 'Berita Terbaru',
-    href: '/berita-terbaru',
+    name: 'Semua Berita',
+    href: '/semua-berita',
     icon: NewspaperIcon,
   },
   {
