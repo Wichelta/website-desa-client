@@ -36,12 +36,12 @@ export default function ImageModalGallery({
 
   return (
     <div className="modal fixed inset-0 z-50 overflow-y-auto backdrop-blur-sm">
-      <div className="flex min-h-screen items-center justify-center p-5">
+      <div className="flex min-h-screen items-center justify-center p-2 md:p-5">
         <div className="fixed inset-0 bg-black bg-opacity-80" onClick={onClose}></div>
         <div className="fixed left-0 right-0 top-0 z-50 flex h-20 w-full items-center justify-center bg-black bg-opacity-60 px-4 py-2 md:py-3">
           <div className="flex w-full xl:max-w-7xl">
             <div className="flex w-full flex-col justify-between overflow-hidden whitespace-nowrap p-1">
-              <h2 className="text-lg font-medium capitalize text-gray-300 md:text-2xl">
+              <h2 className="truncate text-lg font-medium capitalize text-gray-300 md:text-2xl">
                 {image.title}
               </h2>
               <p className="text-sm text-gray-500 md:text-base">
@@ -79,7 +79,7 @@ export default function ImageModalGallery({
         </Fade>
         <button
           onClick={onPrev}
-          className="absolute left-0 top-1/2 z-50 ml-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none md:mt-0"
+          className="absolute left-0 top-1/2 z-50 ml-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none lg:mt-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@ export default function ImageModalGallery({
         </button>
         <button
           onClick={onNext}
-          className="absolute right-0 top-1/2 z-50 mr-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none md:mt-0"
+          className="absolute right-0 top-1/2 z-50 mr-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none lg:mt-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
