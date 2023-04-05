@@ -13,7 +13,7 @@ const router = createBrowserRouter(
     <Route exact path="/" element={<LandingPage />} errorElement={<PageNotFound />} />,
     <Route path="/profil-desa" element={<ProfilePage />} />,
     <Route path="/galeri-desa" element={<GalleryPage />} />,
-    <Route path="/berita-terbaru" element={<NewsPage />} />,
+    <Route path="/semua-berita" element={<NewsPage />} />,
     <Route path="/agenda-kegiatan-desa" element={<AgendaActivitiesPage />} />,
     <Route path="/kontak" element={<ContactPage />} />,
     <Route path="/example" element={<Example />} />,
