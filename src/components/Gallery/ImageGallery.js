@@ -20,6 +20,8 @@ export default function ImageGallery({ data }) {
   const [pagination, setPagination] = useState(1);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     const sortedImages = data.sort((a, b) => {
       if (sortOrder === 'oldest') {
@@ -45,10 +47,14 @@ export default function ImageGallery({ data }) {
 
   const handleImageClick = (index) => {
     setSelectedImageIndex(index);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const handleCloseModal = () => {
     setSelectedImageIndex(null);
+    setIsModalOpen(false);
+    document.body.style.overflow = 'auto';
   };
 
   const handlePrevClick = () => {
@@ -196,6 +202,7 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
           onNext={handleNextClick}
           startImageNumber={selectedImageIndex + 1}
           endImageNumber={data.length}
+          isModalOpen={isModalOpen}
         />
       )}
     </div>
