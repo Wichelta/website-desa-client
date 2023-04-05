@@ -20,13 +20,13 @@ export default function CarouselImg() {
                 className="carousel-image h-screen select-none object-cover brightness-50"
               />
               <div className="carousel-text-container mt-5 flex w-full flex-col gap-5 md:max-w-5xl">
-                <h2 className="text-4xl font-bold md:text-6xl">Selamat Datang</h2>
-                <p className="max-w-md self-center text-lg md:max-w-2xl md:text-2xl lg:max-w-full">
+                <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">Selamat Datang</h2>
+                <p className="max-w-md self-center text-lg sm:text-xl md:max-w-2xl md:text-2xl lg:max-w-full">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor velit at erat
                   dictum mollis.
                 </p>
                 <button className="w-max select-none self-center rounded-md bg-blue-primary px-5 py-2 font-bold text-white hover:bg-sky-950">
-                  Jelajahi <span aria-hidden="true">→</span>
+                  Jelajahi
                 </button>
               </div>
             </div>
