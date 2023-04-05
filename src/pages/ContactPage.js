@@ -1,12 +1,12 @@
-import React from "react";
-import Header from "../components/Header";
-import { Helmet, HelmetProvider } from "react-helmet-async";
-import Breadcrumb from "../components/Breadcrumb";
+import React from 'react';
+import Header from '../components/Header';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Breadcrumb from '../components/Breadcrumb';
 
 export default function ContactPage() {
   const links = [
-    { name: "Home", path: "/" },
-    { name: "Hubungi Kami", path: "/kontak" },
+    { name: 'Home', path: '/' },
+    { name: 'Hubungi Kami', path: '/kontak' },
   ];
   return (
     <>

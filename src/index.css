@@ -2,14 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-.carousel {
-  height: 700px;
+html {
+  scroll-behavior: smooth;
 }
 
-.carousel-image-container {
+.nav-link {
   position: relative;
-  height: 700px;
 }
+
+.nav-link::before {
+  transition: 300ms;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: #014a94;
+}
+
+.nav-link-ltr::before {
+  width: 0%;
+  bottom: 0px;
+}
+
+.nav-link-ltr:hover::before {
+  width: 100%;
+}
+
+// Carousel
 
 .carousel-image {
   object-fit: cover;
@@ -25,6 +43,5 @@
   text-align: center;
   color: #fff;
   z-index: 1;
-  max-width: 1000px;
   padding: 2rem;
 }

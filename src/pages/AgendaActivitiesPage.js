@@ -3,16 +3,16 @@ import Header from '../components/Header';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Breadcrumb from '../components/Breadcrumb';
 
-export default function NewsPage() {
+export default function AgendaActivitiesPage() {
   const links = [
     { name: 'Home', path: '/' },
-    { name: 'Semua Berita', path: '/semua-berita' },
+    { name: 'Agenda Kegiatan Desa', path: '/agenda-kegiatan-desa' },
   ];
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>Semua Berita - BRIliant</title>
+          <title>Agenda Kegiatan Desa - BRIliant</title>
         </Helmet>
       </HelmetProvider>
       <Header />

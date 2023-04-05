@@ -1,13 +1,14 @@
-import React from "react";
-import Header from "../components/Header";
-import Profile from "../components/Profile";
-import { Helmet, HelmetProvider } from "react-helmet-async";
-import Breadcrumb from "../components/Breadcrumb";
+import React from 'react';
+import Header from '../components/Header';
+import Profile from '../components/Profile/ProfileDetails';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Breadcrumb from '../components/Breadcrumb';
+import data from '../json/profileData.json';
 
 export default function ProfilePage() {
   const links = [
-    { name: "Home", path: "/" },
-    { name: "Profil Desa", path: "/profil-desa" },
+    { name: 'Home', path: '/' },
+    { name: 'Profil Desa', path: '/profil-desa' },
   ];
 
   return (
@@ -19,7 +20,7 @@ export default function ProfilePage() {
       </HelmetProvider>
       <Breadcrumb links={links} />
       <Header />
-      <Profile />
+      <Profile data={data.profileData} />
     </>
   );
 }

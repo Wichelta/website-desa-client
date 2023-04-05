@@ -1,9 +1,15 @@
-import React from "react";
-import CarouselImg from "../components/Carousel";
-import Header from "../components/Header";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import React, { useEffect } from 'react';
+import CarouselImg from '../components/Home/Carousel';
+import Header from '../components/Header';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import LatestNews from '../components/Home/LatestNews';
+import data from '../json/newsData.json';
 
 export default function LandingPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <HelmetProvider>
@@ -13,6 +19,7 @@ export default function LandingPage() {
       </HelmetProvider>
       <Header />
       <CarouselImg />
+      <LatestNews data={data.newsData} />
     </>
   );
 }
