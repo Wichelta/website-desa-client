@@ -37,8 +37,8 @@ export default function ImageModalGallery({
   });
 
   return (
-    <div className="modal fixed inset-0 z-50 overflow-y-auto backdrop-blur-sm">
-      <div className="flex min-h-screen items-center justify-center p-2 md:p-5">
+    <div className="fixed inset-0 z-50 h-full overflow-y-auto backdrop-blur-sm">
+      <div className="flex h-full items-center justify-center p-2 md:p-5">
         <div className="fixed inset-0 bg-black bg-opacity-80" onClick={onClose}></div>
         <div className="fixed left-0 right-0 top-0 z-50 flex h-20 w-full items-center justify-center bg-black bg-opacity-60 px-4 py-2 md:py-3">
           <div className="flex w-full xl:max-w-7xl">
