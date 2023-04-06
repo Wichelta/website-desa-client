@@ -59,7 +59,7 @@ export default function ImageModalGallery({
           </div>
         </div>
         <img
-          className="z-50 mt-20 max-h-[80vh] touch-pinch-zoom xl:max-w-screen-xl xl:p-2"
+          className="z-40 mt-20 max-h-[80vh] touch-pinch-zoom xl:max-w-screen-xl xl:p-2"
           src={image.src}
           alt={image.alt}
           {...handlers}

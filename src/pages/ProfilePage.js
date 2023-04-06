@@ -7,7 +7,7 @@ import data from '../json/profileData.json';
 
 export default function ProfilePage() {
   const links = [
-    { name: 'Home', path: '/' },
+    { name: 'Beranda', path: '/' },
     { name: 'Profil Desa', path: '/profil-desa' },
   ];
 

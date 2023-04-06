@@ -36,17 +36,17 @@ export default function LatestNews({ data }) {
           {displayedNews.map((news, index) => (
             <div key={index} className="w-full max-w-screen-xl lg:w-auto">
               <Fade direction="up" delay={100 * index} triggerOnce>
-                <div className="flex w-full flex-col justify-center rounded-lg shadow-lg xs:w-full lg:w-80 xl:w-96">
+                <div className="flex w-full flex-col justify-center rounded-lg shadow-lg transition duration-300 ease-in-out hover:shadow-2xl xs:w-full lg:w-80 xl:w-96">
                   <div className="relative flex h-full w-full flex-col justify-start rounded-lg border md:flex-row md:gap-0 lg:h-[41rem] lg:flex-col lg:gap-5 xl:h-[38rem]">
                     <div className="relative h-60 w-full object-cover md:h-[21rem] lg:h-60">
                       <img
                         src={news.src}
                         alt={news.alt}
-                        className="h-60 w-full rounded-t-lg object-cover md:h-[21rem] md:min-w-[18rem] md:rounded-l-lg md:rounded-tr-none lg:h-60 lg:rounded-bl-none lg:rounded-tl-lg lg:rounded-tr-lg"
+                        className="h-60 w-full cursor-pointer select-none rounded-t-lg object-cover md:h-[21rem] md:min-w-[18rem] md:rounded-l-lg md:rounded-tr-none lg:h-60 lg:rounded-bl-none lg:rounded-tl-lg lg:rounded-tr-lg"
                       />
                     </div>
                     <div className="flex h-full flex-col gap-3 px-4 py-4 md:px-4 md:py-4 lg:px-4 lg:py-0">
-                      <h5 className="w-full self-center truncate text-center text-base font-bold text-gray-900 sm:text-lg md:w-[26rem] md:self-start md:text-left lg:w-full">
+                      <h5 className="w-full cursor-pointer self-center truncate text-center text-base font-bold text-gray-900 sm:text-lg md:w-[26rem] md:self-start md:text-left lg:w-full">
                         {news.title}
                       </h5>
                       <div className="flex flex-row items-center gap-1 self-center text-center md:self-start md:text-left">

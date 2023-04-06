@@ -26,7 +26,7 @@ export default function CarouselImg() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor velit at erat
                   dictum mollis.
                 </p>
-                <button className="w-max select-none self-center rounded-md bg-blue-primary px-5 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-sky-950">
+                <button className="w-max select-none self-center rounded-md bg-blue-primary px-5 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-blue-secondary">
                   Jelajahi
                 </button>
               </Fade>

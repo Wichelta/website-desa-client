@@ -8,8 +8,8 @@ import { Fade } from 'react-awesome-reveal';
 
 const listInformasi = [
   {
-    name: 'Semua Berita',
-    href: '/semua-berita',
+    name: 'Berita Seputar Desa',
+    href: '/berita-seputar-desa',
     icon: NewspaperIcon,
   },
   {
@@ -84,7 +84,7 @@ export default function Header() {
                 '/',
               )}`}
             >
-              Home
+              Beranda
             </a>
             <a
               href="/profil-desa"
@@ -185,7 +185,7 @@ export default function Header() {
                       '/',
                     )}`}
                   >
-                    Home
+                    Beranda
                   </a>
                   <a
                     href="/profil-desa"

@@ -7,7 +7,7 @@ import data from '../json/galleryData.json';
 
 export default function GalleryPage() {
   const links = [
-    { name: 'Home', path: '/' },
+    { name: 'Beranda', path: '/' },
     { name: 'Galeri Desa', path: '/galeri-desa' },
   ];
 
