@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import ImageModalGallery from './ImageModalGallery';
+import ImageModalGallery from '../ImageModalGallery';
 import { Listbox, Transition } from '@headlessui/react';
 import { BarLoader } from 'react-spinners';
 import {
@@ -10,8 +10,8 @@ import {
 } from '@heroicons/react/20/solid';
 import { Fade } from 'react-awesome-reveal';
 
-export default function ImageGallery({ data }) {
-  const PAGE_SIZE = 6;
+export default function ImageGallery({ galleryDataJson }) {
+  const PAGE_SIZE = 9;
 
   const [sortOrder, setSortOrder] = useState('newest');
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +23,7 @@ export default function ImageGallery({ data }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const sortedImages = data.sort((a, b) => {
+    const sortedImages = galleryDataJson.sort((a, b) => {
       if (sortOrder === 'oldest') {
         return new Date(a.dateCreated) - new Date(b.dateCreated);
       } else {
@@ -34,12 +34,12 @@ export default function ImageGallery({ data }) {
     setPagination(1);
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 300);
-  }, [sortOrder, data]);
+  }, [sortOrder, galleryDataJson]);
 
   const handleShowMore = () => {
     const startIndex = pagination * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
-    const newImages = data.slice(startIndex, endIndex);
+    const newImages = galleryDataJson.slice(startIndex, endIndex);
     setDisplayedImages((prevImages) => [...prevImages, ...newImages]);
     setPagination((prevPagination) => prevPagination + 1);
     setIsLoading(false);
@@ -65,7 +65,7 @@ export default function ImageGallery({ data }) {
   };
 
   const handleNextClick = () => {
-    if (selectedImageIndex === data.length - 1) {
+    if (selectedImageIndex === galleryDataJson.length - 1) {
       return;
     }
     setSelectedImageIndex(selectedImageIndex + 1);
@@ -76,8 +76,8 @@ export default function ImageGallery({ data }) {
   };
 
   return (
-    <div className="container mx-auto mt-40 max-w-screen-xl px-4 py-5 sm:px-6 lg:px-7">
-      <div className="flex flex-col gap-6">
+    <div className="container mx-auto mt-32 max-w-screen-xl px-4 py-5 sm:px-6 lg:px-7">
+      <div className="flex flex-col gap-4">
         <div className="col-span-3 flex justify-end">
           <Listbox value={sortOrder} onChange={handleSortOrderChange}>
             <div className="relative mt-1">
@@ -157,12 +157,12 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
           <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
             {displayedImages.map((image, index) => (
               <div key={index} onClick={() => handleImageClick(index)}>
-                <Fade delay={100 * index} triggerOnce>
-                  <div className="group relative cursor-pointer">
+                <Fade direction="up" delay={100 * index} triggerOnce>
+                  <div className="group relative cursor-pointer overflow-hidden">
                     <img
                       src={image.src}
                       alt={image.alt}
-                      className="h-72 w-full object-cover duration-300 group-hover:brightness-50 group-hover:ease-in-out"
+                      className="h-72 w-full transform object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
                     />
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
                       <div className="relative h-10 w-10">
@@ -177,31 +177,33 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
             ))}
           </div>
         )}
-        {displayedImages.length < data.length && (
+        {displayedImages.length < galleryDataJson.length && (
           <div className="col-span-3 flex justify-center">
             {isLoading ? null : (
-              <button
-                onClick={handleShowMore}
-                className="group col-span-3 m-auto flex w-52 flex-col items-center justify-center text-center text-gray-500 underline hover:text-blue-primary"
-              >
-                Tampilkan lebih banyak
-                <ChevronDownIcon
-                  className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
-                  aria-hidden="true"
-                />
-              </button>
+              <Fade direction="up" delay={300} triggerOnce>
+                <button
+                  onClick={handleShowMore}
+                  className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 underline transition duration-300 ease-in-out hover:text-blue-primary"
+                >
+                  Tampilkan lebih banyak
+                  <ChevronDownIcon
+                    className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
+                    aria-hidden="true"
+                  />
+                </button>
+              </Fade>
             )}
           </div>
         )}
       </div>
       {selectedImageIndex !== null && (
         <ImageModalGallery
-          image={data[selectedImageIndex]}
+          image={galleryDataJson[selectedImageIndex]}
           onClose={handleCloseModal}
           onPrev={handlePrevClick}
           onNext={handleNextClick}
           startImageNumber={selectedImageIndex + 1}
-          endImageNumber={data.length}
+          endImageNumber={galleryDataJson.length}
           isModalOpen={isModalOpen}
         />
       )}

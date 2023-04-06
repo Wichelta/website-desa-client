@@ -3,7 +3,9 @@ import CarouselImg from '../components/Home/Carousel';
 import Header from '../components/Header';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import LatestNews from '../components/Home/LatestNews';
-import data from '../json/newsData.json';
+import LatestImageGallery from '../components/Home/LatestImageGallery';
+import galleryDataJson from '../json/galleryData.json';
+import newsDataJson from '../json/newsData.json';
 
 export default function LandingPage() {
   useEffect(() => {
@@ -19,7 +21,8 @@ export default function LandingPage() {
       </HelmetProvider>
       <Header />
       <CarouselImg />
-      <LatestNews data={data.newsData} />
+      <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
+      <LatestNews newsDataJson={newsDataJson.newsData} />
     </>
   );
 }

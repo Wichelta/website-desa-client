@@ -49,13 +49,6 @@ export default function Breadcrumb({ links }) {
               </Link>
               {index < links.length - 1 && (
                 <ChevronRightIcon aria-hidden="true" className="mx-2 h-5 w-5 text-gray-500" />
-                // <svg
-                //   className="mx-2 h-3 w-3 flex-shrink-0 fill-current text-gray-400"
-                //   xmlns="http://www.w3.org/2000/svg"
-                //   viewBox="0 0 20 20"
-                // >
-                //   <path d="M5.555 5.555a7.5 7.5 0 109.192 9.192l5.253 5.252-1.414 1.414-5.252-5.253a7.5 7.5 0 10-9.192-9.192l-5.253-5.253L.343.343l5.253 5.253z" />
-                // </svg>
               )}
             </li>
           ))}

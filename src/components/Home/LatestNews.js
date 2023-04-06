@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Fade } from 'react-awesome-reveal';
-import { CalendarDaysIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid';
+import { CalendarDaysIcon, ArrowLongRightIcon, UserIcon } from '@heroicons/react/20/solid';
 
-export default function LatestNews({ data }) {
+export default function LatestNews({ newsDataJson }) {
   const [displayedNews, setDisplayedNews] = useState([]);
 
   useEffect(() => {
-    const sortedNews = data
+    const sortedNews = newsDataJson
       .sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated))
       .slice(0, 3);
     setDisplayedNews(sortedNews);
-  }, [data]);
+  }, [newsDataJson]);
 
   const formatDate = (date) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -27,10 +27,10 @@ export default function LatestNews({ data }) {
 
   return (
     <Fade direction="up" triggerOnce>
-      <div className="container mx-auto mt-40 max-w-screen-xl px-2 py-5 xs:px-3">
-        <div className="mb-1 flex flex-col items-center gap-2 py-4">
+      <div className="container mx-auto mb-8 max-w-screen-xl px-2 py-4 xs:px-3 sm:py-16">
+        <div className="mb-4 flex flex-col items-center gap-2 py-4">
           <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Berita Terkini</h2>
-          <p className="text-sm text-gray-500 sm:text-base">Seputar Berita Di Desa</p>
+          <p className="text-sm text-gray-500 sm:text-base">Seputar Berita di Desa</p>
         </div>
         <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
           {displayedNews.map((news, index) => (
@@ -46,17 +46,23 @@ export default function LatestNews({ data }) {
                       />
                     </div>
                     <div className="flex h-full flex-col gap-3 px-4 py-4 md:px-4 md:py-4 lg:px-4 lg:py-0">
-                      <h5 className="w-full cursor-pointer self-center truncate text-center text-base font-bold text-gray-900 sm:text-lg md:w-[26rem] md:self-start md:text-left lg:w-full">
+                      <h5
+                        className="w-full cursor-pointer self-center truncate text-center text-base font-bold text-gray-900 sm:text-lg md:w-[26rem] md:self-start md:text-left lg:w-full"
+                        title={news.title}
+                      >
                         {news.title}
                       </h5>
-                      <div className="flex flex-row items-center gap-1 self-center text-center md:self-start md:text-left">
-                        <CalendarDaysIcon
-                          className="h-4 w-4 text-gray-500 sm:h-5 sm:w-5"
-                          aria-hidden="true"
-                        />
-                        <span className="text-sm text-gray-500 sm:text-base">
-                          {formatDate(news.dateCreated)}
-                        </span>
+                      <div className="flex flex-row items-center gap-5 self-center text-center md:self-start md:text-left">
+                        <div className="flex flex-row items-center gap-1">
+                          <CalendarDaysIcon className="h-4 w-4 text-gray-500" aria-hidden="true" />
+                          <span className="text-sm text-gray-500">
+                            {formatDate(news.dateCreated)}
+                          </span>
+                        </div>
+                        <div className="flex flex-row items-center gap-1">
+                          <UserIcon className="h-4 w-4 text-gray-500" aria-hidden="true" />
+                          <span className="text-sm text-gray-500">{news.author}</span>
+                        </div>
                       </div>
                       <p className="text-sm text-gray-700 sm:text-base">
                         {truncateDescription(news.description)}
@@ -65,7 +71,7 @@ export default function LatestNews({ data }) {
                         className="group static bottom-0 w-max self-end text-blue-primary hover:underline md:absolute md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
                         onClick={() => console.log('Read more clicked')}
                       >
-                        Baca selengkapnya
+                        Baca Selengkapnya
                         <ArrowLongRightIcon
                           className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1"
                           aria-hidden="true"
