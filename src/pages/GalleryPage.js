@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Breadcrumb from '../components/Breadcrumb';
 import ImageGallery from '../components/Gallery/ImageGallery';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import data from '../json/galleryData.json';
+import galleryDataJson from '../json/galleryData.json';
 
 export default function GalleryPage() {
   const links = [
@@ -20,7 +20,7 @@ export default function GalleryPage() {
       </HelmetProvider>
       <Header />
       <Breadcrumb links={links} />
-      <ImageGallery data={data.galleryData} />
+      <ImageGallery galleryDataJson={galleryDataJson.galleryData} />
     </>
   );
 }
