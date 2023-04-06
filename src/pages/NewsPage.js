@@ -5,14 +5,14 @@ import Breadcrumb from '../components/Breadcrumb';
 
 export default function NewsPage() {
   const links = [
-    { name: 'Home', path: '/' },
-    { name: 'Semua Berita', path: '/semua-berita' },
+    { name: 'Beranda', path: '/' },
+    { name: 'Berita Seputar Desa', path: '/berita-seputar-desa' },
   ];
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>Semua Berita - BRIliant</title>
+          <title>Berita Seputar Desa - BRIliant</title>
         </Helmet>
       </HelmetProvider>
       <Header />

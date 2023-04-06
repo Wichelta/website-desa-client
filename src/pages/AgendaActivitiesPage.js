@@ -5,7 +5,7 @@ import Breadcrumb from '../components/Breadcrumb';
 
 export default function AgendaActivitiesPage() {
   const links = [
-    { name: 'Home', path: '/' },
+    { name: 'Beranda', path: '/' },
     { name: 'Agenda Kegiatan Desa', path: '/agenda-kegiatan-desa' },
   ];
   return (

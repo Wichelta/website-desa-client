@@ -5,7 +5,7 @@ import Breadcrumb from '../components/Breadcrumb';
 
 export default function ContactPage() {
   const links = [
-    { name: 'Home', path: '/' },
+    { name: 'Beranda', path: '/' },
     { name: 'Hubungi Kami', path: '/kontak' },
   ];
   return (
