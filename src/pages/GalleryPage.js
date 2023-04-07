@@ -4,6 +4,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import ImageGallery from '../components/Gallery/ImageGallery';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import galleryDataJson from '../json/galleryData.json';
+import BackToTop from '../components/BackToTop';
 
 export default function GalleryPage() {
   const links = [
@@ -21,6 +22,7 @@ export default function GalleryPage() {
       <Header />
       <Breadcrumb links={links} />
       <ImageGallery galleryDataJson={galleryDataJson.galleryData} />
+      <BackToTop />
     </>
   );
 }
