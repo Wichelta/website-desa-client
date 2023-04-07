@@ -53,7 +53,7 @@ export default function LatestImageGallery({ galleryDataJson }) {
         <Fade direction="up" triggerOnce className="m-auto">
           <div className="flex flex-col items-center gap-2 py-4">
             <h2 className="text-2xl font-bold text-gray-50 sm:text-3xl">Galeri Singkat</h2>
-            <p className="text-sm text-gray-300 sm:text-base">Gambar Terbaru di Desa</p>
+            <p className="text-sm text-gray-300 sm:text-base">Foto Terbaru di Desa</p>
           </div>
           {isLoading ? (
             <div className="col-span-3 mt-10 flex h-80 flex-col items-center justify-center gap-5 md:gap-7">
@@ -65,7 +65,7 @@ export default function LatestImageGallery({ galleryDataJson }) {
               {displayedImages.map((image, index) => (
                 <div key={index} onClick={() => handleImageClick(index)}>
                   <Fade direction="up" delay={100 * index} triggerOnce>
-                    <div className="group relative cursor-pointer overflow-hidden">
+                    <div className="group relative cursor-pointer overflow-hidden rounded-md">
                       <img
                         src={image.src}
                         alt={image.alt}
