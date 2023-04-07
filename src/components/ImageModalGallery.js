@@ -37,7 +37,7 @@ export default function ImageModalGallery({
   });
 
   return (
-    <div className="fixed inset-0 z-50 h-full overflow-y-auto backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 h-full overflow-y-auto">
       <div className="flex h-full items-center justify-center p-2 md:p-5">
         <div className="fixed inset-0 bg-black bg-opacity-80" onClick={onClose}></div>
         <div className="fixed left-0 right-0 top-0 z-50 flex h-20 w-full items-center justify-center bg-black bg-opacity-60 px-4 py-2 md:py-3">
@@ -54,7 +54,7 @@ export default function ImageModalGallery({
               onClick={onClose}
               className="p-1 text-gray-400 hover:text-gray-50 focus:outline-none"
             >
-              <XMarkIcon aria-hidden="true" className="h-6 w-6 md:h-9 md:w-9" />
+              <XMarkIcon aria-hidden="true" className="h-9 w-9" />
             </button>
           </div>
         </div>
@@ -68,13 +68,13 @@ export default function ImageModalGallery({
           onClick={onPrev}
           className="absolute left-0 top-1/2 z-50 ml-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none lg:mt-3"
         >
-          <ChevronLeftIcon aria-hidden="true" className="h-8 w-8 md:h-10 md:w-10" />
+          <ChevronLeftIcon aria-hidden="true" className="h-10 w-10" />
         </button>
         <button
           onClick={onNext}
           className="absolute right-0 top-1/2 z-50 mr-3 mt-5 transform text-gray-400 hover:text-gray-50 focus:outline-none lg:mt-3"
         >
-          <ChevronRightIcon aria-hidden="true" className="h-8 w-8 md:h-10 md:w-10" />
+          <ChevronRightIcon aria-hidden="true" className="h-10 w-10" />
         </button>
       </div>
     </div>
