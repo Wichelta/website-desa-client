@@ -5,6 +5,7 @@ import ImgCarousel1 from '../../assets/images/img_carousel_1.jpg';
 import ImgCarousel2 from '../../assets/images/img_carousel_2.jpg';
 import ImgCarousel3 from '../../assets/images/img_carousel_3.jpg';
 import { Fade } from 'react-awesome-reveal';
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 export default function CarouselImg() {
   const images = [ImgCarousel1, ImgCarousel2, ImgCarousel3];
@@ -19,16 +20,23 @@ export default function CarouselImg() {
               alt={`Slide ${index}`}
               className="h-screen select-none object-cover brightness-50"
             />
-            <div className="carousel-text-container mt-5 flex w-full flex-col items-center gap-5 md:max-w-5xl">
+            <div className="carousel-text-container flex w-full flex-col items-center gap-3 text-center md:max-w-5xl">
               <Fade direction="up" cascade damping={0.3}>
-                <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">Selamat Datang</h2>
-                <p className="max-w-md self-center text-lg sm:text-xl md:max-w-2xl md:text-2xl lg:max-w-full">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor velit at erat
-                  dictum mollis.
+                <h2 className="text-3xl font-bold text-gray-50 sm:text-5xl md:text-6xl">
+                  Selamat Datang di Website Resmi
+                </h2>
+                <p className="text-2xl font-bold text-gray-50 sm:text-4xl md:text-5xl">
+                  Desa BRIliant
                 </p>
-                <button className="w-max select-none self-center rounded-md bg-blue-primary px-5 py-2 font-bold text-white transition duration-300 ease-in-out hover:bg-blue-secondary">
+                <p className="text-lg font-bold text-gray-50 sm:text-2xl md:text-3xl">
+                  Kec. Sungai Raya, Kab. Kubu Raya
+                </p>
+                <div className="mt-3 flex h-14 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-50 text-gray-300 transition duration-300 ease-in-out hover:text-gray-50">
+                  <ChevronDownIcon aria-hidden="true" className="mt-3 h-10 w-10 animate-bounce" />
+                </div>
+                {/* <button className="select-none self-center rounded-md bg-blue-primary px-4 py-2 font-medium text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary">
                   Jelajahi
-                </button>
+                </button> */}
               </Fade>
             </div>
           </div>
