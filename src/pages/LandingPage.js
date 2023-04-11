@@ -7,6 +7,7 @@ import LatestImageGallery from '../components/Home/LatestImageGallery';
 import galleryDataJson from '../json/galleryData.json';
 import newsDataJson from '../json/newsData.json';
 import BackToTop from '../components/BackToTop';
+import Footer from '../components/Footer';
 
 export default function LandingPage() {
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function LandingPage() {
       <CarouselImg />
       <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
       <LatestNews newsDataJson={newsDataJson.newsData} />
+      <Footer />
       <BackToTop />
     </>
   );

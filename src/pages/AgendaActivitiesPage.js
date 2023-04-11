@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Breadcrumb from '../components/Breadcrumb';
+import Footer from '../components/Footer';
 
 export default function AgendaActivitiesPage() {
   const links = [
@@ -17,6 +18,7 @@ export default function AgendaActivitiesPage() {
       </HelmetProvider>
       <Header />
       <Breadcrumb links={links} />
+      <Footer />
     </>
   );
 }

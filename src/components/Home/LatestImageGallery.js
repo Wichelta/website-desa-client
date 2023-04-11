@@ -50,7 +50,7 @@ export default function LatestImageGallery({ galleryDataJson }) {
   return (
     <div className="mx-auto w-full bg-blue-secondary">
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-2 py-4 xs:px-3 sm:py-16 lg:px-10">
-        <Fade direction="up" triggerOnce className="m-auto">
+        <Fade direction="up" triggerOnce>
           <div className="flex flex-col items-center gap-2 py-4">
             <h2 className="text-2xl font-bold text-gray-50 sm:text-3xl">Galeri Singkat</h2>
             <p className="text-sm text-gray-300 sm:text-base">Foto Terbaru di Desa</p>
@@ -84,12 +84,12 @@ export default function LatestImageGallery({ galleryDataJson }) {
               ))}
             </div>
           )}
-          <Fade direction="up" delay={500} triggerOnce className="py-4">
+          <Fade direction="up" delay={500} triggerOnce className="py-4 text-center">
             <a
               href="/galeri-desa"
               className="group text-center text-gray-300 transition duration-300 ease-in-out hover:text-gray-100 hover:underline"
             >
-              Lihat Selengkapnya di Galeri
+              Lihat Semua Foto di Galeri
               <ArrowLongRightIcon
                 className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gray-100"
                 aria-hidden="true"

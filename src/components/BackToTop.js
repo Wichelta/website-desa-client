@@ -20,12 +20,12 @@ const BackToTop = () => {
 
   return (
     <button
-      className={`fixed bottom-6 right-6 rounded-md bg-blue-secondary p-3 text-white ${
+      className={`fixed bottom-6 right-6 rounded-md bg-black bg-opacity-75 p-2 text-gray-50 sm:p-3 ${
         showButton ? 'visible' : 'invisible'
       }`}
       onClick={handleClick}
     >
-      <ArrowUpIcon className="h-6 w-6" aria-hidden="true" />
+      <ArrowUpIcon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
     </button>
   );
 };
