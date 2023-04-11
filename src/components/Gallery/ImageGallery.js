@@ -77,7 +77,7 @@ export default function ImageGallery({ galleryDataJson }) {
 
   return (
     <div className="mx-auto w-full bg-white">
-      <div className="container mx-auto mt-32 max-w-screen-xl px-4 py-5 sm:px-6 lg:px-7">
+      <div className="container mx-auto mt-24 flex max-w-screen-xl flex-col gap-4 px-2 py-4 xs:px-3 sm:py-14 lg:px-10">
         <div className="flex flex-col gap-4">
           <div className="col-span-3 flex justify-end">
             <Listbox value={sortOrder} onChange={handleSortOrderChange}>
