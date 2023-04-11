@@ -5,7 +5,7 @@ import ImgCarousel1 from '../../assets/images/img_carousel_1.jpg';
 import ImgCarousel2 from '../../assets/images/img_carousel_2.jpg';
 import ImgCarousel3 from '../../assets/images/img_carousel_3.jpg';
 import { Fade } from 'react-awesome-reveal';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+// import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 export default function CarouselImg() {
   const images = [ImgCarousel1, ImgCarousel2, ImgCarousel3];
@@ -31,12 +31,12 @@ export default function CarouselImg() {
                 <p className="text-lg font-bold text-gray-50 sm:text-2xl md:text-3xl">
                   Kec. Sungai Raya, Kab. Kubu Raya
                 </p>
-                <div className="mt-3 flex h-14 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-50 text-gray-300 transition duration-300 ease-in-out hover:text-gray-50">
+                {/* <div className="mt-3 flex h-14 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-50 text-gray-300 transition duration-300 ease-in-out hover:text-gray-50">
                   <ChevronDownIcon aria-hidden="true" className="mt-3 h-10 w-10 animate-bounce" />
-                </div>
-                {/* <button className="select-none self-center rounded-md bg-blue-primary px-4 py-2 font-medium text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary">
+                </div> */}
+                <button className="mt-3 select-none self-center rounded-md bg-blue-primary px-4 py-2 font-medium text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary">
                   Jelajahi
-                </button> */}
+                </button>
               </Fade>
             </div>
           </div>
