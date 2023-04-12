@@ -49,7 +49,7 @@ export default function LatestImageGallery({ galleryDataJson }) {
 
   return (
     <div className="mx-auto w-full bg-blue-secondary">
-      <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-2 py-4 xs:px-3 sm:py-16 lg:px-10">
+      <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
         <Fade direction="up" triggerOnce>
           <div className="flex flex-col items-center gap-2 py-4">
             <h2 className="text-2xl font-bold text-gray-50 sm:text-3xl">Galeri Singkat</h2>
