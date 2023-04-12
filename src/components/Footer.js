@@ -41,9 +41,9 @@ export default function Footer() {
                 </svg>
                 08991049322
               </a>
-              <span className="flex flex-row items-center gap-2 text-base leading-none text-gray-300">
+              <span className="flex flex-row items-center gap-2 text-base leading-tight text-gray-300">
                 <MapPinIcon aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
-                Desa BRIliant, Kec. Sungai Raya, Kab. Kubu Raya
+                Jl. Kuala Dua, Kec. Sungai Raya, Kab. Kubu Raya
               </span>
             </div>
           </div>
