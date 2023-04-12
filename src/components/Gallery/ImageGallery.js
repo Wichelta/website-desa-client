@@ -163,7 +163,7 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
                       <img
                         src={image.src}
                         alt={image.alt}
-                        className="h-72 w-full transform object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
+                        className="h-72 w-full transform select-none object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
                       />
                       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
                         <div className="relative h-10 w-10">

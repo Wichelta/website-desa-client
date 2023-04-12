@@ -8,6 +8,7 @@ import galleryDataJson from '../json/galleryData.json';
 import newsDataJson from '../json/newsData.json';
 import BackToTop from '../components/BackToTop';
 import Footer from '../components/Footer';
+import ShortProfile from '../components/Home/ShortProfile';
 
 export default function LandingPage() {
   useEffect(() => {
@@ -23,6 +24,7 @@ export default function LandingPage() {
       </HelmetProvider>
       <Header />
       <CarouselImg />
+      <ShortProfile />
       <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
       <LatestNews newsDataJson={newsDataJson.newsData} />
       <Footer />
