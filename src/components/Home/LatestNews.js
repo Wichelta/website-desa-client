@@ -27,7 +27,7 @@ export default function LatestNews({ newsDataJson }) {
 
   return (
     <div className="mx-auto w-full bg-white">
-      <div className="container mx-auto max-w-screen-xl flex-col gap-4 px-2 py-4 xs:px-3 sm:py-16 lg:px-10">
+      <div className="container mx-auto max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
         <Fade direction="up" triggerOnce>
           <div className="flex flex-col items-center gap-2 py-4">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Berita Terkini</h2>
@@ -84,7 +84,12 @@ export default function LatestNews({ newsDataJson }) {
               </div>
             ))}
           </div>
-          <Fade direction="up" delay={500} triggerOnce className="py-4 text-center">
+          <Fade
+            direction="up"
+            delay={500}
+            triggerOnce
+            className="mb-3 mt-8 py-4 text-center sm:mb-0"
+          >
             <a
               href="/berita-seputar-desa"
               className="rounded-md bg-blue-primary px-4 py-2.5 text-center text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary"
