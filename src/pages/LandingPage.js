@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import CarouselImg from '../components/Home/Carousel';
 import Header from '../components/Header';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
@@ -15,6 +15,8 @@ export default function LandingPage() {
     window.scrollTo(0, 0);
   }, []);
 
+  const refShortProfile = useRef(null);
+
   return (
     <>
       <HelmetProvider>
@@ -23,8 +25,8 @@ export default function LandingPage() {
         </Helmet>
       </HelmetProvider>
       <Header />
-      <CarouselImg />
-      <ShortProfile />
+      <CarouselImg refShortProfile={refShortProfile} />
+      <ShortProfile refShortProfile={refShortProfile} />
       <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
       <LatestNews newsDataJson={newsDataJson.newsData} />
       <Footer />
