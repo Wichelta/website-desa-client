@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function ShortProfile() {
+export default function ShortProfile({ refShortProfile }) {
   return (
-    <div className="mx-auto w-full bg-white">
+    <div className="mx-auto w-full bg-white" ref={refShortProfile}>
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
         <div className="flex flex-col gap-4">
           <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">
