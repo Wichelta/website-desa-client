@@ -65,7 +65,7 @@ export default function ImageGallery({ galleryDataJson }) {
   };
 
   const handleNextClick = () => {
-    if (selectedImageIndex === galleryDataJson.length - 1) {
+    if (selectedImageIndex === displayedImages.length - 1) {
       return;
     }
     setSelectedImageIndex(selectedImageIndex + 1);
@@ -204,7 +204,7 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
             onPrev={handlePrevClick}
             onNext={handleNextClick}
             startImageNumber={selectedImageIndex + 1}
-            endImageNumber={galleryDataJson.length}
+            endImageNumber={displayedImages.length}
             isModalOpen={isModalOpen}
           />
         )}
