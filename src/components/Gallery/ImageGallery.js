@@ -11,7 +11,7 @@ import {
 import { Fade } from 'react-awesome-reveal';
 
 export default function ImageGallery({ galleryDataJson }) {
-  const PAGE_SIZE = 9;
+  const PAGE_SIZE = 6;
 
   const [sortOrder, setSortOrder] = useState('newest');
   const [isLoading, setIsLoading] = useState(true);
@@ -77,12 +77,12 @@ export default function ImageGallery({ galleryDataJson }) {
 
   return (
     <div className="mx-auto w-full bg-white">
-      <div className="container mx-auto mt-24 flex max-w-screen-xl flex-col gap-4 px-2 py-14 xs:px-3 lg:px-10">
+      <div className="container mx-auto mt-24 flex max-w-screen-xl flex-col gap-4 px-4 py-14 lg:px-10">
         <div className="flex flex-col gap-4">
           <div className="col-span-3 flex justify-end">
             <Listbox value={sortOrder} onChange={handleSortOrderChange}>
               <div className="relative mt-1">
-                <Listbox.Button className="relative w-40 rounded-md bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-60">
+                <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-60">
                   <span className="block truncate">
                     {sortOrder === 'newest' ? 'Terbaru' : 'Terlama'}
                   </span>
@@ -155,7 +155,7 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
               <p className="text-gray-500">Memuat...</p>
             </div>
           ) : (
-            <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
+            <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
               {displayedImages.map((image, index) => (
                 <div key={index} onClick={() => handleImageClick(index)}>
                   <Fade direction="up" delay={100 * index} triggerOnce>
@@ -164,6 +164,7 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
                         src={image.src}
                         alt={image.alt}
                         className="h-72 w-full transform select-none object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
+                        onClick={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
                       />
                       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
                         <div className="relative h-10 w-10">
