@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { Transition } from '@headlessui/react';
+
 // Todo : Add a Popover from headlessui (Icon Information) to show the image details (title, dateCreated, caption)
 
 export default function ImageModalGallery({
@@ -58,10 +59,10 @@ export default function ImageModalGallery({
       <div className="fixed inset-0 h-full overflow-y-auto">
         <div className="flex h-full items-center justify-center p-2 md:p-5">
           <div
-            className="fixed inset-0 bg-black bg-opacity-80"
+            className="fixed inset-0 bg-black bg-opacity-90"
             onClick={handleCloseTransition}
           ></div>
-          <div className="fixed left-0 right-0 top-0 z-50 flex h-20 w-full items-center justify-center bg-black bg-opacity-60 px-4 py-2 md:py-3">
+          <div className="fixed left-0 right-0 top-0 z-50 flex h-20 w-full items-center justify-center bg-black bg-opacity-75 px-4 py-2 md:py-3">
             <div className="flex w-full xl:max-w-7xl">
               <div className="flex w-full flex-col justify-between overflow-hidden whitespace-nowrap p-1">
                 <h2 className="truncate text-lg font-medium capitalize text-gray-300 md:text-2xl">
