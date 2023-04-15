@@ -15,6 +15,7 @@ export default function ImageGallery({ galleryDataJson }) {
 
   const [sortOrder, setSortOrder] = useState('newest');
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingShowMore, setIsLoadingShowMore] = useState(true);
 
   const [displayedImages, setDisplayedImages] = useState([]);
   const [pagination, setPagination] = useState(1);
@@ -33,6 +34,7 @@ export default function ImageGallery({ galleryDataJson }) {
     setDisplayedImages(sortedImages.slice(0, PAGE_SIZE));
     setPagination(1);
     setIsLoading(true);
+    setIsLoadingShowMore(false);
     setTimeout(() => setIsLoading(false), 300);
   }, [sortOrder, galleryDataJson]);
 
@@ -42,7 +44,8 @@ export default function ImageGallery({ galleryDataJson }) {
     const newImages = galleryDataJson.slice(startIndex, endIndex);
     setDisplayedImages((prevImages) => [...prevImages, ...newImages]);
     setPagination((prevPagination) => prevPagination + 1);
-    setIsLoading(false);
+    setIsLoadingShowMore(true);
+    setTimeout(() => setIsLoadingShowMore(false), 300);
   };
 
   const handleImageClick = (index) => {
@@ -181,8 +184,8 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
           )}
           {displayedImages.length < galleryDataJson.length && (
             <div className="col-span-3 flex justify-center">
-              {isLoading ? null : (
-                <Fade direction="up" delay={300} triggerOnce>
+              {isLoading || isLoadingShowMore ? null : (
+                <Fade direction="up" delay={900} triggerOnce>
                   <button
                     onClick={handleShowMore}
                     className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 underline transition duration-300 ease-in-out hover:text-blue-primary"
