@@ -69,7 +69,7 @@ export default function ImageModalGallery({
                   {image.title}
                 </h2>
                 <p className="text-sm text-gray-500 md:text-base">
-                  Image {startImageNumber} of {endImageNumber}
+                  {startImageNumber} / {endImageNumber}
                 </p>
               </div>
               <button
@@ -81,7 +81,7 @@ export default function ImageModalGallery({
             </div>
           </div>
           <img
-            className="z-40 mt-20 max-h-[80vh] xl:max-w-screen-xl xl:p-2"
+            className="z-40 mt-20 max-h-[80vh] rounded-md xl:max-w-screen-xl"
             src={image.src}
             alt={image.alt}
             {...handlers}
