@@ -8,19 +8,20 @@ export default function Footer() {
       <div className="container mx-auto max-w-screen-xl px-6 py-5 lg:px-7">
         <Fade triggerOnce>
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:gap-0">
-            <div className="w-full md:mb-0 lg:w-1/2">
-              <h3 className="mb-2 text-xl font-bold text-gray-50">Desa BRIliant</h3>
+            <div className="flex w-full flex-col gap-2 md:mb-0 lg:w-1/2">
+              <h3 className="text-xl font-bold text-gray-50">Desa BRIliant</h3>
               <p className="text-base text-gray-300">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic
-                typesetting, remaining essentially unchanged.
+                Desa ini didirikan pada tahun 1800-an oleh sekelompok petani yang mencari tempat
+                yang subur untuk bercocok tanam. Pada awalnya, desa ini hanya terdiri dari beberapa
+                rumah kecil yang dikelilingi oleh ladang-ladang jagung dan padi. Namun seiring
+                waktu, desa ini berkembang pesat dan menjadi salah satu pusat perdagangan terbesar
+                di daerah tersebut. Saat ini, desa ini memiliki lebih dari 10.000 penduduk dan
+                menjadi tujuan wisata yang populer karena keindahan alamnya.
               </p>
             </div>
             <div className="flex w-full flex-col lg:w-1/2 lg:flex-row-reverse">
               <div className="flex flex-col gap-2">
-                <h3 className="mb-2 text-xl font-bold text-gray-50">Kontak</h3>
+                <h3 className="text-xl font-bold text-gray-50">Kontak</h3>
                 <a
                   href="mailto:desabriliant@gmail.com"
                   className="flex flex-row items-center gap-2 text-base text-gray-300 hover:text-gray-50"
