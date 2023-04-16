@@ -25,7 +25,7 @@ const BackToTop = () => {
       }`}
       onClick={handleClick}
     >
-      <ArrowUpIcon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
+      <ArrowUpIcon className="h-6 w-6" aria-hidden="true" />
     </button>
   );
 };

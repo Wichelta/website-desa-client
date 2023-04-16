@@ -57,14 +57,14 @@ export default function ImageModalGallery({
       className="absolute z-50"
     >
       <div className="fixed inset-0 h-full overflow-y-auto">
-        <div className="flex h-full items-center justify-center p-2 md:p-5">
+        <div className="flex h-full items-center justify-center p-2 md:p-5" {...handlers}>
           <div
             className="fixed inset-0 bg-black bg-opacity-90"
             onClick={handleCloseTransition}
           ></div>
           <div className="fixed left-0 right-0 top-0 z-50 flex h-20 w-full items-center justify-center bg-black bg-opacity-75 px-4 py-2 md:py-3">
             <div className="flex w-full xl:max-w-7xl">
-              <div className="flex w-full flex-col justify-between overflow-hidden whitespace-nowrap p-1">
+              <div className="flex w-full flex-col justify-between overflow-hidden whitespace-nowrap">
                 <h2 className="truncate text-lg font-medium capitalize text-gray-300 md:text-2xl">
                   {image.title}
                 </h2>
@@ -74,7 +74,7 @@ export default function ImageModalGallery({
               </div>
               <button
                 onClick={handleCloseTransition}
-                className="p-1 text-gray-400 hover:text-gray-50 focus:outline-none"
+                className="text-gray-400 hover:text-gray-50 focus:outline-none"
               >
                 <XMarkIcon aria-hidden="true" className="h-9 w-9" />
               </button>
@@ -84,7 +84,6 @@ export default function ImageModalGallery({
             className="z-40 mt-20 max-h-[80vh] rounded-md xl:max-w-screen-xl"
             src={image.src}
             alt={image.alt}
-            {...handlers}
           />
           <button
             onClick={onPrev}

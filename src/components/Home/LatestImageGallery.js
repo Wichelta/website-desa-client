@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ImageModalGallery from '../ImageModalGallery';
-import { BarLoader } from 'react-spinners';
 import { ArrowsPointingOutIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid';
 import { Fade } from 'react-awesome-reveal';
+import LoadingIndicator from '../LoadingIndicator';
+import EmptyState from '../EmptyState';
 
 export default function LatestImageGallery({ galleryDataJson }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +19,7 @@ export default function LatestImageGallery({ galleryDataJson }) {
       .slice(0, 6);
     setDisplayedImages(sortedImages);
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 300);
+    setTimeout(() => setIsLoading(false), 1000);
   }, [galleryDataJson]);
 
   const handleImageClick = (index) => {
@@ -48,21 +49,22 @@ export default function LatestImageGallery({ galleryDataJson }) {
   };
 
   return (
-    <div className="mx-auto w-full bg-blue-secondary">
+    <section className="mx-auto w-full bg-blue-secondary">
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
-        <Fade direction="up" triggerOnce>
-          <div className="flex flex-col items-center gap-2 py-4">
+        <div className="flex flex-col items-center gap-2 py-4">
+          <Fade direction="up" cascade damping={0.3} triggerOnce>
             <h2 className="text-2xl font-bold text-gray-50 sm:text-3xl">Galeri Singkat</h2>
             <p className="text-sm text-gray-300 sm:text-base">Foto Terbaru di Desa</p>
-          </div>
-          {isLoading ? (
-            <div className="col-span-3 mt-10 flex h-80 flex-col items-center justify-center gap-5 md:gap-7">
-              <BarLoader height={5} width={150} color={'#9CA3AF'} />
-              <p className="text-gray-500">Memuat...</p>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
-              {displayedImages.map((image, index) => (
+          </Fade>
+        </div>
+        {isLoading ? (
+          <LoadingIndicator />
+        ) : (
+          <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+            {!displayedImages.length ? (
+              <EmptyState textColor="text-gray-300" />
+            ) : (
+              displayedImages.map((image, index) => (
                 <div key={index} onClick={() => handleImageClick(index)}>
                   <Fade direction="up" delay={100 * index} triggerOnce>
                     <div className="group relative cursor-pointer overflow-hidden rounded-md">
@@ -81,22 +83,29 @@ export default function LatestImageGallery({ galleryDataJson }) {
                     </div>
                   </Fade>
                 </div>
-              ))}
-            </div>
-          )}
-          <Fade direction="up" delay={500} triggerOnce className="py-4 text-center">
-            <a
-              href="/galeri-desa"
-              className="group text-center text-gray-300 transition duration-300 ease-in-out hover:text-gray-100 hover:underline"
-            >
-              Lihat Semua Foto di Galeri
-              <ArrowLongRightIcon
-                className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gray-100"
-                aria-hidden="true"
-              />
-            </a>
-          </Fade>
-        </Fade>
+              ))
+            )}
+            {displayedImages.length ? (
+              <Fade
+                direction="up"
+                delay={500}
+                triggerOnce
+                className="col-span-full py-4 text-center"
+              >
+                <a
+                  href="/galeri-desa"
+                  className="group text-center text-gray-300 transition duration-300 ease-in-out hover:text-gray-100 hover:underline"
+                >
+                  Lihat Semua Foto di Galeri
+                  <ArrowLongRightIcon
+                    className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gray-100"
+                    aria-hidden="true"
+                  />
+                </a>
+              </Fade>
+            ) : null}
+          </div>
+        )}
       </div>
       {selectedImageIndex !== null && (
         <ImageModalGallery
@@ -109,6 +118,6 @@ export default function LatestImageGallery({ galleryDataJson }) {
           isModalOpen={isModalOpen}
         />
       )}
-    </div>
+    </section>
   );
 }

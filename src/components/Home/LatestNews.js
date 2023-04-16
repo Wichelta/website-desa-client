@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { CalendarDaysIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid';
-import { BarLoader } from 'react-spinners';
+import LoadingIndicator from '../LoadingIndicator';
+import EmptyState from '../EmptyState';
 
 export default function LatestNews({ newsDataJson }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +14,7 @@ export default function LatestNews({ newsDataJson }) {
       .slice(0, 3);
     setDisplayedNews(sortedNews);
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 300);
+    setTimeout(() => setIsLoading(false), 1000);
   }, [newsDataJson]);
 
   const formatDate = (date) => {
@@ -30,24 +31,25 @@ export default function LatestNews({ newsDataJson }) {
   }
 
   return (
-    <div className="mx-auto w-full bg-white">
+    <section className="mx-auto w-full bg-white">
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
-        <Fade direction="up" triggerOnce>
-          <div className="flex flex-col items-center gap-2 py-4">
+        <div className="flex flex-col items-center gap-2 py-4">
+          <Fade direction="up" cascade damping={0.3} triggerOnce>
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">Berita Terkini</h2>
             <p className="text-sm text-gray-500 sm:text-base">Seputar Berita di Desa</p>
-          </div>
-          {isLoading ? (
-            <div className="col-span-3 mt-10 flex h-80 flex-col items-center justify-center gap-5 md:gap-7">
-              <BarLoader height={5} width={150} color={'#9CA3AF'} />
-              <p className="text-gray-500">Memuat...</p>
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
-              {displayedNews.map((news, index) => (
-                <div key={index} className="w-full max-w-screen-xl lg:w-auto">
+          </Fade>
+        </div>
+        {isLoading ? (
+          <LoadingIndicator />
+        ) : (
+          <div className="flex flex-col items-center justify-center gap-4 lg:grid lg:grid-cols-3">
+            {!displayedNews.length ? (
+              <EmptyState textColor="text-gray-500" />
+            ) : (
+              displayedNews.map((news, index) => (
+                <div key={index} className="w-full max-w-screen-xl">
                   <Fade direction="up" delay={100 * index} triggerOnce>
-                    <div className="flex w-full flex-col justify-center rounded-md bg-white shadow-lg transition duration-300 ease-in-out hover:shadow-2xl xs:w-full lg:w-80 xl:w-96">
+                    <div className="flex w-full flex-col justify-center rounded-md bg-white shadow-lg transition duration-300 ease-in-out hover:shadow-2xl">
                       <div className="relative flex h-full w-full flex-col justify-start rounded-md border md:flex-row md:gap-0 lg:h-[41rem] lg:flex-col lg:gap-5 xl:h-[38rem]">
                         <div className="relative h-60 w-full object-cover md:h-[21rem] lg:h-60">
                           <img
@@ -92,24 +94,26 @@ export default function LatestNews({ newsDataJson }) {
                     </div>
                   </Fade>
                 </div>
-              ))}
-            </div>
-          )}
-          <Fade
-            direction="up"
-            delay={500}
-            triggerOnce
-            className="mb-3 mt-4 py-4 text-center sm:mb-0"
-          >
-            <a
-              href="/berita-seputar-desa"
-              className="rounded-md bg-blue-primary px-4 py-2.5 text-center text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary"
-            >
-              Lihat Semua Berita
-            </a>
-          </Fade>
-        </Fade>
+              ))
+            )}
+            {displayedNews.length ? (
+              <Fade
+                direction="up"
+                delay={500}
+                triggerOnce
+                className="col-span-3 mb-3 mt-4 py-4 text-center sm:mb-0"
+              >
+                <a
+                  href="/berita-seputar-desa"
+                  className="rounded-md bg-blue-primary px-4 py-2.5 text-center text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary"
+                >
+                  Lihat Semua Berita
+                </a>
+              </Fade>
+            ) : null}
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   );
 }

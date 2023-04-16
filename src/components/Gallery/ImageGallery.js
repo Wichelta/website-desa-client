@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import ImageModalGallery from '../ImageModalGallery';
 import { Listbox, Transition } from '@headlessui/react';
-import { BarLoader } from 'react-spinners';
 import {
   CheckIcon,
   ChevronUpDownIcon,
@@ -9,6 +8,8 @@ import {
   ArrowsPointingOutIcon,
 } from '@heroicons/react/20/solid';
 import { Fade } from 'react-awesome-reveal';
+import LoadingIndicator from '../LoadingIndicator';
+import EmptyState from '../EmptyState';
 
 export default function ImageGallery({ galleryDataJson }) {
   const PAGE_SIZE = 6;
@@ -35,7 +36,7 @@ export default function ImageGallery({ galleryDataJson }) {
     setPagination(1);
     setIsLoading(true);
     setIsLoadingShowMore(false);
-    setTimeout(() => setIsLoading(false), 300);
+    setTimeout(() => setIsLoading(false), 1000);
   }, [sortOrder, galleryDataJson]);
 
   const handleShowMore = () => {
@@ -45,7 +46,7 @@ export default function ImageGallery({ galleryDataJson }) {
     setDisplayedImages((prevImages) => [...prevImages, ...newImages]);
     setPagination((prevPagination) => prevPagination + 1);
     setIsLoadingShowMore(true);
-    setTimeout(() => setIsLoadingShowMore(false), 300);
+    setTimeout(() => setIsLoadingShowMore(false), 1000);
   };
 
   const handleImageClick = (index) => {
@@ -79,13 +80,13 @@ export default function ImageGallery({ galleryDataJson }) {
   };
 
   return (
-    <div className="mx-auto w-full bg-white">
-      <div className="container mx-auto mt-24 flex max-w-screen-xl flex-col gap-4 px-4 py-14 lg:px-10">
+    <main className="mx-auto w-full bg-white">
+      <div className="container mx-auto mt-[8.5rem] flex max-w-screen-xl flex-col px-4 py-4 sm:py-16 lg:px-10">
         <div className="flex flex-col gap-4">
           <div className="col-span-3 flex justify-end">
             <Listbox value={sortOrder} onChange={handleSortOrderChange}>
-              <div className="relative mt-1">
-                <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-60">
+              <div className="relative mt-0.5">
+                <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left shadow focus:outline-none">
                   <span className="block truncate">
                     {sortOrder === 'newest' ? 'Terbaru' : 'Terlama'}
                   </span>
@@ -153,50 +154,54 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
             </Listbox>
           </div>
           {isLoading ? (
-            <div className="col-span-3 mt-10 flex h-80 flex-col items-center justify-center gap-5 md:gap-7">
-              <BarLoader height={5} width={150} color={'#9CA3AF'} />
-              <p className="text-gray-500">Memuat...</p>
-            </div>
+            <LoadingIndicator />
           ) : (
             <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
-              {displayedImages.map((image, index) => (
-                <div key={index} onClick={() => handleImageClick(index)}>
-                  <Fade direction="up" delay={100 * index} triggerOnce>
-                    <div className="group relative cursor-pointer overflow-hidden rounded-md">
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="h-72 w-full transform select-none object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
-                        onClick={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
-                      />
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
-                        <div className="relative h-10 w-10">
-                          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center text-white">
-                            <ArrowsPointingOutIcon aria-hidden="true" className="h-6 w-6" />
+              {!displayedImages.length ? (
+                <EmptyState textColor="text-gray-500" />
+              ) : (
+                displayedImages.map((image, index) => (
+                  <div key={index} onClick={() => handleImageClick(index)}>
+                    <Fade direction="up" delay={100 * index} triggerOnce>
+                      <div className="group relative cursor-pointer overflow-hidden rounded-md">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="h-72 w-full transform select-none object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
+                          onClick={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
+                        />
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
+                          <div className="relative h-10 w-10">
+                            <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center text-white">
+                              <ArrowsPointingOutIcon aria-hidden="true" className="h-6 w-6" />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Fade>
+                  </div>
+                ))
+              )}
+              {/* {isLoadingShowMore ? (
+                <div className="col-span-full flex -translate-x-0 -translate-y-[40rem] justify-center">
+                  <LoadingIndicator />
+                </div>
+              ) : null} */}
+              {!isLoadingShowMore && displayedImages.length < galleryDataJson.length && (
+                <div className="col-span-full flex justify-center">
+                  <Fade direction="up" delay={900} triggerOnce>
+                    <button
+                      onClick={handleShowMore}
+                      className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 underline transition duration-300 ease-in-out hover:text-blue-primary"
+                    >
+                      Tampilkan Lebih Banyak
+                      <ChevronDownIcon
+                        className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
+                        aria-hidden="true"
+                      />
+                    </button>
                   </Fade>
                 </div>
-              ))}
-            </div>
-          )}
-          {displayedImages.length < galleryDataJson.length && (
-            <div className="col-span-3 flex justify-center">
-              {isLoading || isLoadingShowMore ? null : (
-                <Fade direction="up" delay={900} triggerOnce>
-                  <button
-                    onClick={handleShowMore}
-                    className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 underline transition duration-300 ease-in-out hover:text-blue-primary"
-                  >
-                    Tampilkan Lebih Banyak
-                    <ChevronDownIcon
-                      className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
-                      aria-hidden="true"
-                    />
-                  </button>
-                </Fade>
               )}
             </div>
           )}
@@ -213,6 +218,6 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
           />
         )}
       </div>
-    </div>
+    </main>
   );
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import Img404 from '../assets/images/404notfound.jpg';
+import Img404NotFound from '../assets/images/img_404_not_found.jpg';
 
 export default function PageNotFound() {
   return (
     <main className="grid h-screen place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="flex flex-col items-center gap-5 text-center">
-        <img src={Img404} alt="404 not found" className="m-auto w-[35rem] select-none" />
+        <img src={Img404NotFound} alt="404 not found" className="m-auto w-[35rem] select-none" />
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
           Halaman tidak ditemukan
         </h1>
