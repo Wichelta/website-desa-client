@@ -80,7 +80,7 @@ export default function ImageGallery({ galleryDataJson }) {
   };
 
   return (
-    <div className="mx-auto w-full bg-white">
+    <main className="mx-auto w-full bg-white">
       <div className="container mx-auto mt-24 flex max-w-screen-xl flex-col gap-4 px-4 py-14 lg:px-10">
         <div className="flex flex-col gap-4">
           <div className="col-span-3 flex justify-end">
@@ -218,6 +218,6 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
           />
         )}
       </div>
-    </div>
+    </main>
   );
 }

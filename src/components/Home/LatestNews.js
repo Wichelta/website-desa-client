@@ -31,7 +31,7 @@ export default function LatestNews({ newsDataJson }) {
   }
 
   return (
-    <div className="mx-auto w-full bg-white">
+    <section className="mx-auto w-full bg-white">
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
         <div className="flex flex-col items-center gap-2 py-4">
           <Fade direction="up" cascade damping={0.3} triggerOnce>
@@ -114,6 +114,6 @@ export default function LatestNews({ newsDataJson }) {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }
