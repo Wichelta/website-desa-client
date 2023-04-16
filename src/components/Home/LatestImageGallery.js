@@ -3,6 +3,7 @@ import ImageModalGallery from '../ImageModalGallery';
 import { ArrowsPointingOutIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid';
 import { Fade } from 'react-awesome-reveal';
 import LoadingIndicator from '../LoadingIndicator';
+import EmptyState from '../EmptyState';
 
 export default function LatestImageGallery({ galleryDataJson }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,38 +61,49 @@ export default function LatestImageGallery({ galleryDataJson }) {
           <LoadingIndicator />
         ) : (
           <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
-            {displayedImages.map((image, index) => (
-              <div key={index} onClick={() => handleImageClick(index)}>
-                <Fade direction="up" delay={100 * index} triggerOnce>
-                  <div className="group relative cursor-pointer overflow-hidden rounded-md">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="h-72 w-full transform select-none object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
-                    />
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
-                      <div className="relative h-10 w-10">
-                        <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center text-white">
-                          <ArrowsPointingOutIcon aria-hidden="true" className="h-6 w-6" />
+            {!displayedImages.length ? (
+              <EmptyState textColor="text-gray-300" />
+            ) : (
+              displayedImages.map((image, index) => (
+                <div key={index} onClick={() => handleImageClick(index)}>
+                  <Fade direction="up" delay={100 * index} triggerOnce>
+                    <div className="group relative cursor-pointer overflow-hidden rounded-md">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="h-72 w-full transform select-none object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
+                      />
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
+                        <div className="relative h-10 w-10">
+                          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center text-white">
+                            <ArrowsPointingOutIcon aria-hidden="true" className="h-6 w-6" />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </Fade>
-              </div>
-            ))}
-            <Fade direction="up" delay={500} triggerOnce className="col-span-full py-4 text-center">
-              <a
-                href="/galeri-desa"
-                className="group text-center text-gray-300 transition duration-300 ease-in-out hover:text-gray-100 hover:underline"
+                  </Fade>
+                </div>
+              ))
+            )}
+            {displayedImages.length ? (
+              <Fade
+                direction="up"
+                delay={500}
+                triggerOnce
+                className="col-span-full py-4 text-center"
               >
-                Lihat Semua Foto di Galeri
-                <ArrowLongRightIcon
-                  className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gray-100"
-                  aria-hidden="true"
-                />
-              </a>
-            </Fade>
+                <a
+                  href="/galeri-desa"
+                  className="group text-center text-gray-300 transition duration-300 ease-in-out hover:text-gray-100 hover:underline"
+                >
+                  Lihat Semua Foto di Galeri
+                  <ArrowLongRightIcon
+                    className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gray-100"
+                    aria-hidden="true"
+                  />
+                </a>
+              </Fade>
+            ) : null}
           </div>
         )}
       </div>
