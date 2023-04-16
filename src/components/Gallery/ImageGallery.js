@@ -81,12 +81,12 @@ export default function ImageGallery({ galleryDataJson }) {
 
   return (
     <main className="mx-auto w-full bg-white">
-      <div className="container mx-auto mt-24 flex max-w-screen-xl flex-col gap-4 px-4 py-14 lg:px-10">
+      <div className="container mx-auto mt-[8.5rem] flex max-w-screen-xl flex-col px-4 py-4 sm:py-16 lg:px-10">
         <div className="flex flex-col gap-4">
           <div className="col-span-3 flex justify-end">
             <Listbox value={sortOrder} onChange={handleSortOrderChange}>
               <div className="relative mt-0.5">
-                <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-60">
+                <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left shadow focus:outline-none">
                   <span className="block truncate">
                     {sortOrder === 'newest' ? 'Terbaru' : 'Terlama'}
                   </span>
