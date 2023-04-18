@@ -62,7 +62,7 @@ export default function Header() {
       >
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1">
-            <img src={Logo} alt="Brand Logo" className="w-40 select-none" />
+            <img src={Logo} alt="Brand Logo" className="w-40 select-none no-underline" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -78,7 +78,7 @@ export default function Header() {
         <Popover.Group className="m-1 hidden lg:flex lg:gap-x-7">
           <a
             href="/"
-            className={`nav-link nav-link-ltr text-base font-medium transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out ${isActive(
+            className={`nav-link nav-link-ltr text-base font-medium no-underline transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out ${isActive(
               '/',
             )}`}
           >
@@ -86,7 +86,7 @@ export default function Header() {
           </a>
           <a
             href="/profil-desa"
-            className={`nav-link nav-link-ltr text-base font-medium transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out ${isActive(
+            className={`nav-link nav-link-ltr text-base font-medium no-underline transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out ${isActive(
               '/profil-desa',
             )}`}
           >
@@ -94,14 +94,14 @@ export default function Header() {
           </a>
           <a
             href="/galeri-desa"
-            className={`nav-link nav-link-ltr text-base font-medium transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out ${isActive(
+            className={`nav-link nav-link-ltr text-base font-medium no-underline transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out ${isActive(
               '/galeri-desa',
             )}`}
           >
             Galeri Desa
           </a>
           <Popover className="relative">
-            <Popover.Button className="nav-link nav-link-ltr group flex items-center gap-x-1 text-base font-medium text-gray-700 outline-none transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out">
+            <Popover.Button className="nav-link nav-link-ltr group flex items-center gap-x-1 text-base font-medium text-gray-700 no-underline outline-none transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out">
               Informasi Seputar Desa
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400 transition duration-300 ease-in-out group-hover:text-blue-primary group-hover:ease-in-out"
@@ -134,7 +134,7 @@ export default function Header() {
                       <div className="flex-auto">
                         <a
                           href={item.href}
-                          className={`-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 transition duration-300 ease-in-out hover:bg-gray-50 group-hover:text-blue-primary group-hover:ease-in-out ${isActive(
+                          className={`-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 no-underline transition duration-300 ease-in-out hover:bg-gray-50 group-hover:text-blue-primary group-hover:ease-in-out ${isActive(
                             item.href,
                           )}`}
                         >
@@ -150,7 +150,7 @@ export default function Header() {
           </Popover>
           <a
             href="/kontak"
-            className={`nav-link nav-link-ltr text-base font-medium transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out ${isActive(
+            className={`nav-link nav-link-ltr text-base font-medium no-underline transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out ${isActive(
               '/kontak',
             )}`}
           >
@@ -163,7 +163,11 @@ export default function Header() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex h-8 items-center justify-between">
             <a href="/" className="-m-1">
-              <img src={Logo} alt="Brand Logo" className="w-40 select-none sm:hidden" />
+              <img
+                src={Logo}
+                alt="Brand Logo"
+                className="w-40 select-none no-underline sm:hidden"
+              />
             </a>
             <button
               type="button"
@@ -179,7 +183,7 @@ export default function Header() {
               <div className="space-y-2 py-6">
                 <a
                   href="/"
-                  className={`-mx-3 block px-3 py-2 text-base font-medium leading-7 hover:text-blue-primary ${isActive(
+                  className={`-mx-3 block px-3 py-2 text-base font-medium leading-7 no-underline hover:text-blue-primary ${isActive(
                     '/',
                   )}`}
                 >
@@ -187,7 +191,7 @@ export default function Header() {
                 </a>
                 <a
                   href="/profil-desa"
-                  className={`-mx-3 block px-3 py-2 text-base font-medium leading-7 hover:text-blue-primary ${isActive(
+                  className={`-mx-3 block px-3 py-2 text-base font-medium leading-7 no-underline hover:text-blue-primary ${isActive(
                     '/profil-desa',
                   )}`}
                 >
@@ -195,7 +199,7 @@ export default function Header() {
                 </a>
                 <a
                   href="/galeri-desa"
-                  className={`-mx-3 block px-3 py-2 text-base font-medium leading-7 hover:text-blue-primary ${isActive(
+                  className={`-mx-3 block px-3 py-2 text-base font-medium leading-7 no-underline hover:text-blue-primary ${isActive(
                     '/galeri-desa',
                   )}`}
                 >
@@ -204,7 +208,7 @@ export default function Header() {
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex w-full items-center justify-between py-2 pl-3 pr-3.5 text-base font-medium leading-7 text-gray-700 hover:text-blue-primary">
+                      <Disclosure.Button className="flex w-full items-center justify-between py-2 pl-3 pr-3.5 text-base font-medium leading-7 text-gray-700 no-underline hover:text-blue-primary">
                         Informasi Seputar Desa
                         <ChevronDownIcon
                           className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -217,7 +221,7 @@ export default function Header() {
                             key={item.name}
                             as="a"
                             href={item.href}
-                            className={`block py-2 pl-6 pr-3 text-base font-medium leading-7 hover:text-blue-primary ${isActive(
+                            className={`block py-2 pl-6 pr-3 text-base font-medium leading-7 no-underline hover:text-blue-primary ${isActive(
                               item.href,
                             )}`}
                           >
@@ -230,7 +234,7 @@ export default function Header() {
                 </Disclosure>
                 <a
                   href="/kontak"
-                  className={`-mx-3 block px-3 py-2 text-base font-medium leading-7 hover:text-blue-primary ${isActive(
+                  className={`-mx-3 block px-3 py-2 text-base font-medium leading-7 no-underline hover:text-blue-primary ${isActive(
                     '/kontak',
                   )}`}
                 >
