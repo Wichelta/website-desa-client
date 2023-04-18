@@ -21,7 +21,7 @@ export default function Footer() {
                 <h3 className="text-lg font-bold text-gray-50 sm:text-xl">Kontak</h3>
                 <a
                   href="mailto:desabriliant@gmail.com"
-                  className="flex flex-row items-center gap-2 text-sm text-gray-300 hover:text-gray-50 sm:text-base"
+                  className="flex flex-row items-center gap-2 text-sm text-gray-300 no-underline hover:text-gray-50 sm:text-base"
                 >
                   <EnvelopeIcon aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
                   desabriliant@gmail.com
@@ -30,7 +30,7 @@ export default function Footer() {
                   href={`https://api.whatsapp.com/send?phone=${encodeURIComponent(
                     '+628991049322',
                   )}`}
-                  className="flex flex-row items-center gap-2 text-sm text-gray-300 hover:text-gray-50 sm:text-base"
+                  className="flex flex-row items-center gap-2 text-sm text-gray-300 no-underline hover:text-gray-50 sm:text-base"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,10 @@ export default function Footer() {
         <div className="container mx-auto mt-4 max-w-screen-xl px-6 py-5 lg:px-7">
           <p className="text-center text-sm text-gray-400 sm:text-base">
             &copy; 2023 Desa BRIliant. All Rights Reserved. Created by{' '}
-            <a href="https://github.com/wicheltaians" className="hover:text-gray-50">
+            <a
+              href="https://github.com/wicheltaians"
+              className="text-gray-400 no-underline hover:text-gray-50"
+            >
               Wichelta Iansyah.
             </a>
           </p>

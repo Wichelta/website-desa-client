@@ -103,7 +103,7 @@ export default function LatestImageGallery({ galleryDataJson }) {
           <Fade direction="up" delay={500} triggerOnce className="col-span-full py-4 text-center">
             <a
               href="/galeri-desa"
-              className="group text-center text-sm text-gray-300 transition duration-300 ease-in-out hover:text-gray-100 hover:underline sm:text-base"
+              className="group text-center text-sm text-gray-300 no-underline transition duration-300 ease-in-out hover:text-gray-100 hover:underline sm:text-base"
             >
               Lihat Semua Foto di Galeri
               <ArrowLongRightIcon
