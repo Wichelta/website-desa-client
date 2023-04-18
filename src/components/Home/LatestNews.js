@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import HTMLReactParser from 'html-react-parser';
 import { Fade } from 'react-awesome-reveal';
 import { CalendarDaysIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid';
 import LoadingIndicator from '../LoadingIndicator';
@@ -22,14 +23,6 @@ export default function LatestNews({ newsDataJson }) {
     return new Date(date).toLocaleDateString('id-ID', options);
   };
 
-  function truncateDescription(description, maxLength = 400) {
-    if (description.length <= maxLength) {
-      return description;
-    }
-    const truncated = description.substr(0, maxLength).trim();
-    return truncated + '...';
-  }
-
   return (
     <section className="mx-auto w-full bg-white">
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
@@ -42,25 +35,25 @@ export default function LatestNews({ newsDataJson }) {
         {isLoading ? (
           <LoadingIndicator />
         ) : (
-          <div className="flex flex-col items-center justify-center gap-4 lg:grid lg:grid-cols-3">
+          <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
             {!displayedNews.length ? (
               <EmptyState textColor="text-gray-500" />
             ) : (
               displayedNews.map((news, index) => (
-                <div key={index} className="w-full max-w-screen-xl">
+                <div key={index} className="w-full lg:max-w-[24.333rem]">
                   <Fade direction="up" delay={100 * index} triggerOnce>
-                    <div className="flex w-full flex-col justify-center rounded-md bg-white shadow-lg transition duration-300 ease-in-out hover:shadow-2xl">
-                      <div className="relative flex h-full w-full flex-col justify-start rounded-md border md:flex-row md:gap-0 lg:h-[41rem] lg:flex-col lg:gap-5 xl:h-[38rem]">
-                        <div className="relative h-60 w-full object-cover md:h-[21rem] lg:h-60">
+                    <div className="flex h-full w-full flex-col justify-center rounded-md bg-white shadow-lg transition duration-300 ease-in-out hover:shadow-2xl">
+                      <div className="relative flex h-full w-full flex-col justify-start rounded-md border md:flex-row md:gap-0 lg:h-[38rem] lg:flex-col lg:gap-5">
+                        <div className="relative h-60 w-full object-cover md:h-[21rem] md:w-72 lg:h-60 lg:w-full">
                           <img
                             src={news.src}
                             alt={news.alt}
                             className="h-60 w-full cursor-pointer select-none rounded-t-md object-cover md:h-[21rem] md:min-w-[18rem] md:rounded-l-md md:rounded-tr-none lg:h-60 lg:rounded-bl-none lg:rounded-tl-md lg:rounded-tr-md"
                           />
                         </div>
-                        <div className="flex h-full flex-col gap-3 px-4 py-4 md:px-4 md:py-4 lg:px-4 lg:py-0">
+                        <div className="flex h-full flex-col gap-3 px-4 py-4 md:h-[21rem] lg:py-0">
                           <h5
-                            className="w-full cursor-pointer self-center truncate text-center text-base font-bold text-gray-900 sm:text-lg md:w-[26rem] md:self-start md:text-left lg:w-full"
+                            className="line-clamp-2 w-full cursor-pointer self-center text-center text-base font-semibold text-gray-900 sm:text-lg md:line-clamp-1 md:self-start md:text-left lg:line-clamp-2 lg:w-full"
                             title={news.title}
                           >
                             {news.title}
@@ -76,11 +69,11 @@ export default function LatestNews({ newsDataJson }) {
                               </span>
                             </div>
                           </div>
-                          <p className="text-sm text-gray-700 sm:text-base">
-                            {truncateDescription(news.description)}
-                          </p>
+                          <div className="line-clamp-[8] overflow-hidden text-sm text-gray-700 sm:text-base">
+                            {HTMLReactParser(news.description)}
+                          </div>
                           <button
-                            className="group static bottom-0 w-max self-end text-blue-primary hover:underline md:absolute md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
+                            className="group static w-max self-end text-sm text-blue-primary hover:underline sm:text-base md:absolute md:bottom-0 md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
                             onClick={() => console.log('Read more clicked')}
                           >
                             Baca Selengkapnya
@@ -96,23 +89,23 @@ export default function LatestNews({ newsDataJson }) {
                 </div>
               ))
             )}
-            {displayedNews.length ? (
-              <Fade
-                direction="up"
-                delay={500}
-                triggerOnce
-                className="col-span-3 mb-3 mt-4 py-4 text-center sm:mb-0"
-              >
-                <a
-                  href="/berita-seputar-desa"
-                  className="rounded-md bg-blue-primary px-4 py-2.5 text-center text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary"
-                >
-                  Lihat Semua Berita
-                </a>
-              </Fade>
-            ) : null}
           </div>
         )}
+        {displayedNews.length ? (
+          <Fade
+            direction="up"
+            delay={500}
+            triggerOnce
+            className="col-span-3 mb-3 mt-4 py-4 text-center sm:mb-0"
+          >
+            <a
+              href="/berita-seputar-desa"
+              className="rounded-md bg-blue-primary px-4 py-2.5 text-center text-sm text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary sm:text-base"
+            >
+              Lihat Semua Berita
+            </a>
+          </Fade>
+        ) : null}
       </div>
     </section>
   );
