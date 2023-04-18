@@ -60,12 +60,24 @@ export default function LatestImageGallery({ galleryDataJson }) {
         {isLoading ? (
           <LoadingIndicator />
         ) : (
-          <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            className={`flex flex-col items-center justify-center gap-4 ${
+              displayedImages.length <= 1
+                ? 'sm:flex'
+                : displayedImages.length <= 3
+                ? 'sm:grid sm:grid-cols-2 lg:flex lg:flex-row'
+                : 'sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-3'
+            } `}
+          >
             {!displayedImages.length ? (
               <EmptyState textColor="text-gray-300" />
             ) : (
               displayedImages.map((image, index) => (
-                <div key={index} onClick={() => handleImageClick(index)}>
+                <div
+                  key={index}
+                  className="w-full lg:max-w-[24.333rem]"
+                  onClick={() => handleImageClick(index)}
+                >
                   <Fade direction="up" delay={100 * index} triggerOnce>
                     <div className="group relative cursor-pointer overflow-hidden rounded-md">
                       <img
@@ -85,27 +97,22 @@ export default function LatestImageGallery({ galleryDataJson }) {
                 </div>
               ))
             )}
-            {displayedImages.length ? (
-              <Fade
-                direction="up"
-                delay={500}
-                triggerOnce
-                className="col-span-full py-4 text-center"
-              >
-                <a
-                  href="/galeri-desa"
-                  className="group text-center text-gray-300 transition duration-300 ease-in-out hover:text-gray-100 hover:underline"
-                >
-                  Lihat Semua Foto di Galeri
-                  <ArrowLongRightIcon
-                    className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gray-100"
-                    aria-hidden="true"
-                  />
-                </a>
-              </Fade>
-            ) : null}
           </div>
         )}
+        {displayedImages.length ? (
+          <Fade direction="up" delay={500} triggerOnce className="col-span-full py-4 text-center">
+            <a
+              href="/galeri-desa"
+              className="group text-center text-sm text-gray-300 transition duration-300 ease-in-out hover:text-gray-100 hover:underline sm:text-base"
+            >
+              Lihat Semua Foto di Galeri
+              <ArrowLongRightIcon
+                className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gray-100"
+                aria-hidden="true"
+              />
+            </a>
+          </Fade>
+        ) : null}
       </div>
       {selectedImageIndex !== null && (
         <ImageModalGallery
