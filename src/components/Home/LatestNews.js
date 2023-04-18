@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import HTMLReactParser from 'html-react-parser';
 import { Fade } from 'react-awesome-reveal';
 import { CalendarDaysIcon, ArrowLongRightIcon } from '@heroicons/react/20/solid';
 import LoadingIndicator from '../LoadingIndicator';
@@ -22,14 +23,6 @@ export default function LatestNews({ newsDataJson }) {
     return new Date(date).toLocaleDateString('id-ID', options);
   };
 
-  function truncateDescription(description, maxLength = 400) {
-    if (description.length <= maxLength) {
-      return description;
-    }
-    const truncated = description.substr(0, maxLength).trim();
-    return truncated + '...';
-  }
-
   return (
     <section className="mx-auto w-full bg-white">
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
@@ -50,8 +43,8 @@ export default function LatestNews({ newsDataJson }) {
                 <div key={index} className="w-full max-w-screen-xl">
                   <Fade direction="up" delay={100 * index} triggerOnce>
                     <div className="flex w-full flex-col justify-center rounded-md bg-white shadow-lg transition duration-300 ease-in-out hover:shadow-2xl">
-                      <div className="relative flex h-full w-full flex-col justify-start rounded-md border md:flex-row md:gap-0 lg:h-[41rem] lg:flex-col lg:gap-5 xl:h-[38rem]">
-                        <div className="relative h-60 w-full object-cover md:h-[21rem] lg:h-60">
+                      <div className="relative flex h-full w-full flex-col justify-start rounded-md border md:flex-row md:gap-0 lg:h-[37rem] lg:flex-col lg:gap-5">
+                        <div className="relative h-60 w-full object-cover md:h-[21rem] md:w-72 lg:h-60 lg:w-full">
                           <img
                             src={news.src}
                             alt={news.alt}
@@ -76,11 +69,11 @@ export default function LatestNews({ newsDataJson }) {
                               </span>
                             </div>
                           </div>
-                          <p className="text-sm text-gray-700 sm:text-base">
-                            {truncateDescription(news.description)}
-                          </p>
+                          <div className="line-clamp-[8] overflow-hidden text-gray-700">
+                            {HTMLReactParser(news.description)}
+                          </div>
                           <button
-                            className="group static bottom-0 w-max self-end text-blue-primary hover:underline md:absolute md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
+                            className="group static w-max self-end text-blue-primary hover:underline md:absolute md:bottom-0 md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
                             onClick={() => console.log('Read more clicked')}
                           >
                             Baca Selengkapnya
