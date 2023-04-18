@@ -72,8 +72,8 @@ export default function LatestNews({ newsDataJson }) {
                           <div className="line-clamp-[8] overflow-hidden text-sm text-gray-700 sm:text-base">
                             {HTMLReactParser(news.description)}
                           </div>
-                          <button
-                            className="group static w-max self-end text-sm text-blue-primary hover:underline sm:text-base md:absolute md:bottom-0 md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
+                          <a
+                            className="group static w-max self-end text-sm text-blue-primary no-underline hover:underline sm:text-base md:absolute md:bottom-0 md:right-0 md:w-max md:px-4 md:py-4 lg:right-auto lg:w-max lg:flex-col lg:self-start lg:px-0 lg:py-4"
                             onClick={() => console.log('Read more clicked')}
                           >
                             Baca Selengkapnya
@@ -81,7 +81,7 @@ export default function LatestNews({ newsDataJson }) {
                               className="inline h-5 w-5 translate-x-0 transform transition-transform duration-300 group-hover:translate-x-1"
                               aria-hidden="true"
                             />
-                          </button>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -100,7 +100,7 @@ export default function LatestNews({ newsDataJson }) {
           >
             <a
               href="/berita-seputar-desa"
-              className="rounded-md bg-blue-primary px-4 py-2.5 text-center text-sm text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary sm:text-base"
+              className="rounded-md bg-blue-primary px-4 py-2.5 text-center text-sm text-gray-50 no-underline transition duration-300 ease-in-out hover:bg-blue-secondary sm:text-base"
             >
               Lihat Semua Berita
             </a>
