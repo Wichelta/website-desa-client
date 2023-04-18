@@ -6,6 +6,7 @@ import LatestNews from '../components/Home/LatestNews';
 import LatestImageGallery from '../components/Home/LatestImageGallery';
 import galleryDataJson from '../json/galleryData.json';
 import newsDataJson from '../json/newsData.json';
+import shortProfileDataJson from '../json/profileData.json';
 import BackToTop from '../components/BackToTop';
 import Footer from '../components/Footer';
 import ShortProfile from '../components/Home/ShortProfile';
@@ -26,7 +27,10 @@ export default function LandingPage() {
       </HelmetProvider>
       <Header />
       <CarouselImg refShortProfile={refShortProfile} />
-      <ShortProfile refShortProfile={refShortProfile} />
+      <ShortProfile
+        refShortProfile={refShortProfile}
+        shortProfileDataJson={shortProfileDataJson.profileData}
+      />
       <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
       <LatestNews newsDataJson={newsDataJson.newsData} />
       <Footer />
