@@ -34,7 +34,7 @@ export default function Breadcrumb({ links }) {
       style={{ marginTop: '5.063rem' }}
     >
       <div className="container mx-auto max-w-screen-xl px-3">
-        <ol className="flex items-center justify-center p-4 sm:justify-normal">
+        <ol className="flex list-none items-center justify-center p-4 sm:justify-normal">
           {links.map((link, index) => (
             <li key={index} className="flex items-center">
               <Link
@@ -43,7 +43,7 @@ export default function Breadcrumb({ links }) {
                   location.pathname === link.path
                     ? 'text-blue-primary'
                     : 'text-gray-500 hover:text-blue-primary'
-                } py-0`}
+                } py-0 text-base no-underline`}
               >
                 {link.name}
               </Link>
