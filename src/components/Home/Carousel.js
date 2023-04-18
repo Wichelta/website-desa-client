@@ -26,17 +26,17 @@ export default function CarouselImg({ refShortProfile }) {
               />
               <div className="carousel-text-container flex w-full flex-col items-center gap-3 text-center md:max-w-5xl">
                 <Fade direction="up" cascade damping={0.3}>
-                  <h2 className="text-3xl font-bold text-gray-50 sm:text-5xl md:text-6xl">
+                  <h1 className="text-3xl font-bold text-gray-50 sm:text-4xl md:text-5xl">
                     Selamat Datang di Website Resmi
-                  </h2>
-                  <p className="text-2xl font-bold text-gray-50 sm:text-4xl md:text-5xl">
+                  </h1>
+                  <h2 className="text-2xl font-bold text-gray-50 sm:text-3xl md:text-4xl">
                     Desa BRIliant
-                  </p>
-                  <p className="text-lg font-bold text-gray-50 sm:text-2xl md:text-3xl">
+                  </h2>
+                  <h3 className="text-lg font-bold text-gray-50 sm:text-xl md:text-2xl">
                     Kec. Sungai Raya, Kab. Kubu Raya
-                  </p>
+                  </h3>
                   <button
-                    className="mt-3 select-none self-center rounded-md bg-blue-primary px-4 py-2 font-medium text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary"
+                    className="mt-3 select-none self-center rounded-md bg-blue-primary px-4 py-2 text-sm font-medium text-gray-50 transition duration-300 ease-in-out hover:bg-blue-secondary sm:text-base"
                     onClick={showShortProfile}
                   >
                     Jelajahi
