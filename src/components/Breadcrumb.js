@@ -28,7 +28,7 @@ export default function Breadcrumb({ links }) {
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 z-10 border-b border-gray-200 bg-white transition-all duration-300 ${
+      className={`fixed left-0 right-0 top-0 z-20 border-b border-gray-200 bg-white transition-all duration-300 ${
         shouldShowHeader ? '' : '-translate-y-full py-3'
       }`}
       style={{ marginTop: '5.063rem' }}
