@@ -8,14 +8,13 @@ export default function Profile({ profileDataJson }) {
       <div className="container mx-auto mt-[8.5rem] flex max-w-screen-xl flex-col px-4 py-4 sm:py-16 lg:px-10">
         <div className="flex w-full flex-col items-center gap-5 lg:flex-row">
           <div className="w-full py-4 lg:w-1/3">
-            <Fade direction="left" triggerOnce>
+            <Fade direction="up" triggerOnce>
               <img src={profileDataJson.src} alt="Logo desa" className="m-auto w-72 select-none" />
             </Fade>
           </div>
           <div className="flex w-full flex-col gap-4 py-4 lg:w-2/3">
             <div className="flex flex-col gap-2 text-gray-900">
-              <Fade direction="right" triggerOnce>
-                <h2>{profileDataJson.title}</h2>
+              <Fade direction="up" triggerOnce>
                 {HTMLReactParser(profileDataJson.description)}
               </Fade>
             </div>
