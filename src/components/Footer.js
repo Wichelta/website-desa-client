@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
-import { Fade } from 'react-awesome-reveal';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Footer() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <footer className="bg-blue-secondary py-4 text-white">
-      <Fade triggerOnce>
+      <div data-aos="fade" data-aos-duration="500">
         <div className="container mx-auto flex max-w-screen-xl flex-wrap justify-between px-6 py-5 lg:px-7">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:gap-0">
             <div className="flex w-full flex-col gap-2 md:mb-0 lg:w-1/2">
@@ -71,7 +76,7 @@ export default function Footer() {
             </a>
           </p>
         </div>
-      </Fade>
+      </div>
     </footer>
   );
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import ImageModalGallery from '../ImageModalGallery';
+import LoadingIndicator from '../LoadingIndicator';
+import EmptyState from '../EmptyState';
 import { Listbox, Transition } from '@headlessui/react';
 import {
   CheckIcon,
@@ -7,9 +9,8 @@ import {
   ChevronDownIcon,
   ArrowsPointingOutIcon,
 } from '@heroicons/react/20/solid';
-import { Fade } from 'react-awesome-reveal';
-import LoadingIndicator from '../LoadingIndicator';
-import EmptyState from '../EmptyState';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function ImageGallery({ galleryDataJson }) {
   const PAGE_SIZE = 6;
@@ -37,6 +38,7 @@ export default function ImageGallery({ galleryDataJson }) {
     setIsLoading(true);
     setIsLoadingShowMore(false);
     setTimeout(() => setIsLoading(false), 1000);
+    AOS.init();
   }, [sortOrder, galleryDataJson]);
 
   const handleShowMore = () => {
@@ -86,7 +88,7 @@ export default function ImageGallery({ galleryDataJson }) {
           <div className="col-span-3 flex justify-end">
             <Listbox value={sortOrder} onChange={handleSortOrderChange}>
               <div className="relative mt-0.5">
-                <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left shadow focus:outline-none">
+                <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left text-sm shadow focus:outline-none sm:text-base">
                   <span className="block truncate">
                     {sortOrder === 'newest' ? 'Terbaru' : 'Terlama'}
                   </span>
@@ -114,7 +116,9 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
                       {({ selected }) => (
                         <>
                           <span
-                            className={`${selected ? 'font-medium' : 'font-normal'} block truncate`}
+                            className={`${
+                              selected ? 'font-medium' : 'font-normal'
+                            } block truncate text-sm sm:text-base`}
                           >
                             Terbaru
                           </span>
@@ -136,7 +140,9 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
                       {({ selected }) => (
                         <>
                           <span
-                            className={`${selected ? 'font-medium' : 'font-normal'} block truncate`}
+                            className={`${
+                              selected ? 'font-medium' : 'font-normal'
+                            } block truncate text-sm sm:text-base`}
                           >
                             Terlama
                           </span>
@@ -161,24 +167,28 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
                 <EmptyState textColor="text-gray-500" />
               ) : (
                 displayedImages.map((image, index) => (
-                  <div key={index} onClick={() => handleImageClick(index)}>
-                    <Fade direction="up" delay={100 * index} triggerOnce>
-                      <div className="group relative cursor-pointer overflow-hidden rounded-md">
-                        <img
-                          src={image.src}
-                          alt={image.alt}
-                          className="h-72 w-full transform select-none object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
-                          onClick={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
-                        />
-                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
-                          <div className="relative h-10 w-10">
-                            <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center text-white">
-                              <ArrowsPointingOutIcon aria-hidden="true" className="h-6 w-6" />
-                            </div>
+                  <div
+                    key={index}
+                    data-aos="fade-up"
+                    data-aos-delay={150 * index}
+                    data-aos-duration="500"
+                    onClick={() => handleImageClick(index)}
+                  >
+                    <div className="group relative cursor-pointer overflow-hidden rounded-md">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="h-72 w-full transform select-none object-cover duration-300 group-hover:scale-110 group-hover:brightness-50 group-hover:ease-in-out"
+                        onClick={() => setIsModalOpen((isModalOpen) => !isModalOpen)}
+                      />
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 duration-300 group-hover:opacity-100">
+                        <div className="relative h-10 w-10">
+                          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center text-white">
+                            <ArrowsPointingOutIcon aria-hidden="true" className="h-6 w-6" />
                           </div>
                         </div>
                       </div>
-                    </Fade>
+                    </div>
                   </div>
                 ))
               )}
@@ -188,19 +198,22 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
                 </div>
               ) : null} */}
               {!isLoadingShowMore && displayedImages.length < galleryDataJson.length && (
-                <div className="col-span-full flex justify-center">
-                  <Fade direction="up" delay={900} triggerOnce>
-                    <button
-                      onClick={handleShowMore}
-                      className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 underline transition duration-300 ease-in-out hover:text-blue-primary"
-                    >
-                      Tampilkan Lebih Banyak
-                      <ChevronDownIcon
-                        className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
-                        aria-hidden="true"
-                      />
-                    </button>
-                  </Fade>
+                <div
+                  data-aos="fade-up"
+                  data-aos-delay="150"
+                  data-aos-duration="500"
+                  className="col-span-full flex justify-center"
+                >
+                  <button
+                    onClick={handleShowMore}
+                    className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 underline transition duration-300 ease-in-out hover:text-blue-primary"
+                  >
+                    Tampilkan Lebih Banyak
+                    <ChevronDownIcon
+                      className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
+                      aria-hidden="true"
+                    />
+                  </button>
                 </div>
               )}
             </div>
