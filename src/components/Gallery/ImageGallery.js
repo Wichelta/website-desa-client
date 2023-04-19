@@ -206,7 +206,7 @@ relative cursor-pointer select-none py-2 pl-10 pr-4`
                 >
                   <button
                     onClick={handleShowMore}
-                    className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 underline transition duration-300 ease-in-out hover:text-blue-primary"
+                    className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline"
                   >
                     Tampilkan Lebih Banyak
                     <ChevronDownIcon
