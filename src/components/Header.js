@@ -57,7 +57,7 @@ export default function Header() {
       }`}
     >
       <nav
-        className="mx-auto flex h-16 max-w-7xl items-center justify-between p-6 lg:px-6"
+        className="mx-auto flex h-16 max-w-screen-xl items-center justify-between p-6 lg:px-6"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
