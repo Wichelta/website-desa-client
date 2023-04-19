@@ -14,7 +14,7 @@ export default function PageNotFound() {
         </p>
         <a
           href="/"
-          className="w-max rounded-md bg-blue-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-secondary"
+          className="w-max rounded-md bg-blue-primary px-3.5 py-2.5 text-sm font-semibold text-white no-underline shadow-sm hover:bg-blue-secondary"
         >
           Kembali ke Beranda
         </a>
