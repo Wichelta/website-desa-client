@@ -1,28 +1,21 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageModalGallery from '../ImageModalGallery';
 import LoadingIndicator from '../LoadingIndicator';
 import EmptyState from '../EmptyState';
-import { Listbox, Transition } from '@headlessui/react';
-import {
-  CheckIcon,
-  ChevronUpDownIcon,
-  ChevronDownIcon,
-  ArrowsPointingOutIcon,
-} from '@heroicons/react/20/solid';
+import ListboxSortOption from '../ListboxSortOption';
+import { ChevronDownIcon, ArrowsPointingOutIcon } from '@heroicons/react/20/solid';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-export default function ImageGallery({ galleryDataJson }) {
-  const PAGE_SIZE = 6;
+const PAGE_SIZE = 6;
 
-  const [sortOrder, setSortOrder] = useState('newest');
+export default function ImageGallery({ galleryDataJson }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingShowMore, setIsLoadingShowMore] = useState(true);
-
   const [displayedImages, setDisplayedImages] = useState([]);
   const [pagination, setPagination] = useState(1);
+  const [sortOrder, setSortOrder] = useState('newest');
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -86,78 +79,10 @@ export default function ImageGallery({ galleryDataJson }) {
       <div className="container mx-auto mt-[8.5rem] flex max-w-screen-xl flex-col px-4 py-4 sm:py-16 lg:px-10">
         <div className="flex flex-col gap-4">
           <div className="col-span-3 flex justify-end">
-            <Listbox value={sortOrder} onChange={handleSortOrderChange}>
-              <div className="relative mt-0.5">
-                <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left text-sm shadow focus:outline-none sm:text-base">
-                  <span className="block truncate">
-                    {sortOrder === 'newest' ? 'Terbaru' : 'Terlama'}
-                  </span>
-                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                  </span>
-                </Listbox.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-300"
-                  enterFrom="opacity-0 translate-y-1"
-                  enterTo="opacity-100 translate-y-0"
-                  leave="transition ease-in duration-200"
-                  leaveFrom="opacity-100 translate-y-0"
-                  leaveTo="opacity-0 translate-y-1"
-                >
-                  <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-40 list-none overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                    <Listbox.Option
-                      value="newest"
-                      className={({ active }) =>
-                        `${active ? 'bg-gray-100 ' : 'text-gray-900'}
-relative cursor-pointer select-none py-2 pl-10 pr-4`
-                      }
-                    >
-                      {({ selected }) => (
-                        <>
-                          <span
-                            className={`${
-                              selected ? 'font-medium' : 'font-normal'
-                            } block truncate text-sm sm:text-base`}
-                          >
-                            Terbaru
-                          </span>
-                          {selected ? (
-                            <span className="absolute inset-y-0  left-0 flex items-center pl-3 text-gray-900">
-                              <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                            </span>
-                          ) : null}
-                        </>
-                      )}
-                    </Listbox.Option>
-                    <Listbox.Option
-                      value="oldest"
-                      className={({ active }) =>
-                        `${active ? 'bg-gray-100' : 'text-gray-900'}
-relative cursor-pointer select-none py-2 pl-10 pr-4`
-                      }
-                    >
-                      {({ selected }) => (
-                        <>
-                          <span
-                            className={`${
-                              selected ? 'font-medium' : 'font-normal'
-                            } block truncate text-sm sm:text-base`}
-                          >
-                            Terlama
-                          </span>
-                          {selected ? (
-                            <span className="absolute inset-y-0  left-0 flex items-center pl-3 text-gray-900">
-                              <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                            </span>
-                          ) : null}
-                        </>
-                      )}
-                    </Listbox.Option>
-                  </Listbox.Options>
-                </Transition>
-              </div>
-            </Listbox>
+            <ListboxSortOption
+              sortOrder={sortOrder}
+              handleSortOrderChange={handleSortOrderChange}
+            />
           </div>
           {isLoading ? (
             <LoadingIndicator />
