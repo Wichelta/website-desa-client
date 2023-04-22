@@ -18,7 +18,8 @@ export default function ImageModalGallery({
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === 'Escape') {
-        onClose();
+        setIsShowing(false);
+        setTimeout(() => onClose(), 300);
       } else if (event.key === 'ArrowLeft' && onPrev) {
         onPrev();
       } else if (event.key === 'ArrowRight' && onNext) {

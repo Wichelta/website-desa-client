@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ImageModalGallery from '../ImageModalGallery';
 import LoadingIndicator from '../LoadingIndicator';
 import EmptyState from '../EmptyState';
@@ -17,6 +17,8 @@ export default function ImageGallery({ galleryDataJson }) {
   const [sortOrder, setSortOrder] = useState('newest');
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const bodyRef = useRef(document.body);
 
   useEffect(() => {
     const sortedImages = galleryDataJson.sort((a, b) => {
@@ -47,13 +49,13 @@ export default function ImageGallery({ galleryDataJson }) {
   const handleImageClick = (index) => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
+    bodyRef.current.style.overflow = 'hidden';
   };
 
   const handleCloseModal = () => {
     setSelectedImageIndex(null);
     setIsModalOpen(false);
-    document.body.style.overflow = 'auto';
+    bodyRef.current.style.overflow = 'auto';
   };
 
   const handlePrevClick = () => {
@@ -76,7 +78,7 @@ export default function ImageGallery({ galleryDataJson }) {
 
   return (
     <main className="mx-auto w-full bg-white">
-      <div className="container mx-auto mt-[8.5rem] flex max-w-screen-xl flex-col px-4 py-4 sm:py-16 lg:px-10">
+      <div className="container mx-auto mt-[8.5rem] flex max-w-screen-xl flex-col px-4 py-4 lg:px-10 lg:py-16">
         <div className="flex flex-col gap-4">
           <div className="col-span-3 flex justify-end">
             <ListboxSortOption
@@ -95,8 +97,9 @@ export default function ImageGallery({ galleryDataJson }) {
                   <div
                     key={index}
                     data-aos="fade-up"
-                    data-aos-delay={150 * index}
+                    data-aos-delay={50 * index}
                     data-aos-duration="500"
+                    data-aos-once="true"
                     onClick={() => handleImageClick(index)}
                   >
                     <div className="group relative cursor-pointer overflow-hidden rounded-md">
@@ -127,6 +130,7 @@ export default function ImageGallery({ galleryDataJson }) {
                   data-aos="fade-up"
                   data-aos-delay="150"
                   data-aos-duration="500"
+                  data-aos-once="true"
                   className="col-span-full flex justify-center"
                 >
                   <button

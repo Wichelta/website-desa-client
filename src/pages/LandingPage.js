@@ -25,14 +25,16 @@ export default function LandingPage() {
           <title>Website Desa - BRIliant</title>
         </Helmet>
       </HelmetProvider>
-      <Header />
-      <CarouselImg refShortProfile={refShortProfile} />
-      <ShortProfile
-        refShortProfile={refShortProfile}
-        shortProfileDataJson={shortProfileDataJson.profileData}
-      />
-      <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
-      <LatestNews newsDataJson={newsDataJson.newsData} />
+      <Header shadow="shadow-md" />
+      <main>
+        <CarouselImg refShortProfile={refShortProfile} />
+        <ShortProfile
+          refShortProfile={refShortProfile}
+          shortProfileDataJson={shortProfileDataJson.profileData}
+        />
+        <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
+        <LatestNews newsDataJson={newsDataJson.newsData} />
+      </main>
       <Footer />
       <BackToTop />
     </>
