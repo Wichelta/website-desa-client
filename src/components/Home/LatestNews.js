@@ -47,7 +47,7 @@ export default function LatestNews({ newsDataJson }) {
                 <div
                   key={index}
                   data-aos="fade-up"
-                  data-aos-delay={50 * index}
+                  data-aos-delay={150 * index}
                   data-aos-duration="500"
                   className="w-full lg:max-w-[24.333rem]"
                 >
