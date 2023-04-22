@@ -28,8 +28,8 @@ export default function Header() {
   const [shouldShowHeader, setShouldShowHeader] = useState(true);
   const location = useLocation();
 
-  const isActive = (path) => {
-    return location.pathname === path ? 'text-blue-primary' : 'text-gray-700';
+  const isActive = (...paths) => {
+    return paths.some((path) => location.pathname === path) ? 'text-blue-primary' : 'text-gray-700';
   };
 
   useEffect(() => {
@@ -101,7 +101,10 @@ export default function Header() {
             Galeri Desa
           </a>
           <Popover className="relative">
-            <Popover.Button className="nav-link nav-link-ltr group flex items-center gap-x-1 text-base font-medium text-gray-700 no-underline outline-none transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out">
+            <Popover.Button
+              className={`nav-link nav-link-ltr group flex items-center gap-x-1 text-base font-medium no-underline outline-none transition duration-300 ease-in-out hover:text-blue-primary hover:ease-in-out
+              ${isActive('/berita-seputar-desa', '/agenda-kegiatan-desa')}`}
+            >
               Informasi Seputar Desa
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400 transition duration-300 ease-in-out group-hover:text-blue-primary group-hover:ease-in-out"
@@ -208,7 +211,10 @@ export default function Header() {
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex w-full items-center justify-between py-2 pl-3 pr-3.5 text-base font-medium leading-7 text-gray-700 no-underline hover:text-blue-primary">
+                      <Disclosure.Button
+                        className={`flex w-full items-center justify-between py-2 pl-3 pr-3.5 text-base font-medium leading-7 no-underline hover:text-blue-primary
+                        ${isActive('/berita-seputar-desa', '/agenda-kegiatan-desa')}`}
+                      >
                         Informasi Seputar Desa
                         <ChevronDownIcon
                           className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
