@@ -28,13 +28,14 @@ export default function Breadcrumb({ links }) {
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 z-20 border-b border-gray-200 bg-white transition-all duration-300 ${
-        shouldShowHeader ? '' : '-translate-y-full py-3'
+      className={`fixed left-0 right-0 top-0 z-20 border border-gray-200 bg-white transition-all duration-300 ${
+        shouldShowHeader
+          ? 'mt-[5.03rem]'
+          : 'mt-[4.15rem] -translate-y-full py-1.5 sm:mt-[5.15rem] sm:py-3'
       }`}
-      style={{ marginTop: '5.063rem' }}
     >
       <div className="container mx-auto max-w-screen-xl px-3">
-        <ol className="flex list-none items-center justify-center p-4 sm:justify-normal">
+        <ol className="flex list-none items-center justify-center py-4 sm:justify-normal sm:px-4">
           {links.map((link, index) => (
             <li key={index} className="flex items-center">
               <Link
@@ -43,7 +44,7 @@ export default function Breadcrumb({ links }) {
                   location.pathname === link.path
                     ? 'text-blue-primary'
                     : 'text-gray-500 hover:text-blue-primary'
-                } py-0 text-base no-underline`}
+                } py-0 text-sm leading-none no-underline sm:text-base`}
               >
                 {link.name}
               </Link>
