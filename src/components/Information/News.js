@@ -7,9 +7,12 @@ import { CalendarDaysIcon, ArrowLongRightIcon, ChevronDownIcon } from '@heroicon
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+const PAGE_SIZE = 6;
+
 export default function News({ newsDataJson }) {
   const [isLoading, setIsLoading] = useState(true);
   const [displayedNews, setDisplayedNews] = useState([]);
+  const [pagination, setPagination] = useState(1);
   const [sortOrder, setSortOrder] = useState('newest');
 
   useEffect(() => {
@@ -20,7 +23,8 @@ export default function News({ newsDataJson }) {
         return new Date(b.dateCreated) - new Date(a.dateCreated);
       }
     });
-    setDisplayedNews(sortedNews);
+    setDisplayedNews(sortedNews.slice(0, PAGE_SIZE));
+    setPagination(1);
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 1000);
     AOS.init();
@@ -29,6 +33,16 @@ export default function News({ newsDataJson }) {
   const formatDate = (date) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(date).toLocaleDateString('id-ID', options);
+  };
+
+  const handleShowMore = () => {
+    const startIndex = pagination * PAGE_SIZE;
+    const endIndex = startIndex + PAGE_SIZE;
+    const newNews = newsDataJson.slice(startIndex, endIndex);
+    setDisplayedNews((prevNews) => [...prevNews, ...newNews]);
+    setPagination((prevPagination) => prevPagination + 1);
+    // setIsLoadingShowMore(true);
+    // setTimeout(() => setIsLoadingShowMore(false), 1000);
   };
 
   const handleSortOrderChange = (order) => {
@@ -48,7 +62,7 @@ export default function News({ newsDataJson }) {
           {isLoading ? (
             <LoadingIndicator />
           ) : (
-            <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
+            <div className="flex flex-col items-center justify-center gap-4 lg:grid lg:grid-cols-3 lg:gap-6 xl:gap-8">
               {!displayedNews.length ? (
                 <EmptyState textColor="text-gray-500" />
               ) : (
@@ -56,8 +70,9 @@ export default function News({ newsDataJson }) {
                   <div
                     key={index}
                     data-aos="fade-up"
-                    data-aos-delay={150 * index}
+                    data-aos-delay={50 * index}
                     data-aos-duration="500"
+                    data-aos-once="true"
                     className="w-full lg:max-w-[24.333rem]"
                   >
                     <div className="flex h-full w-full flex-col justify-center rounded-md bg-white shadow-lg transition duration-300 ease-in-out hover:shadow-2xl">
@@ -107,25 +122,28 @@ export default function News({ newsDataJson }) {
                   </div>
                 ))
               )}
+              {!isLoading && displayedNews.length < newsDataJson.length && (
+                <div
+                  data-aos="fade-up"
+                  data-aos-delay="150"
+                  data-aos-duration="500"
+                  className="col-span-full flex justify-center"
+                >
+                  <button
+                    onClick={handleShowMore}
+                    className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline"
+                  >
+                    Tampilkan Lebih Banyak
+                    <ChevronDownIcon
+                      className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>
-        {!isLoading && displayedNews.length < newsDataJson.length && (
-          <div
-            data-aos="fade-up"
-            data-aos-delay="150"
-            data-aos-duration="500"
-            className="col-span-full flex justify-center"
-          >
-            <button className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline">
-              Tampilkan Lebih Banyak
-              <ChevronDownIcon
-                className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
-                aria-hidden="true"
-              />
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
