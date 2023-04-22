@@ -22,7 +22,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Header() {
+export default function Header({ shadow }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lastScrollPos, setLastScrollPos] = useState(0);
   const [shouldShowHeader, setShouldShowHeader] = useState(true);
@@ -52,8 +52,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-30 border-b border-gray-200 bg-white py-2 transition-all duration-300 ${
-        shouldShowHeader ? '' : '-translate-y-full'
+      className={`fixed left-0 right-0 top-0 z-30 border-gray-200 bg-white py-2 ${shadow} transition-all duration-300 ${
+        shouldShowHeader ? '' : '-translate-y-full shadow-none'
       }`}
     >
       <nav
