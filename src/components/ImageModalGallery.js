@@ -65,11 +65,14 @@ export default function ImageModalGallery({
           <div className="fixed left-0 right-0 top-0 z-50 flex h-20 w-full items-center justify-center bg-black bg-opacity-75 px-4 py-2 md:py-3">
             <div className="flex w-full xl:max-w-7xl">
               <div className="flex w-full flex-col justify-between overflow-hidden whitespace-nowrap">
-                <h2 className="truncate text-lg font-medium capitalize text-gray-300 md:text-2xl">
+                <h5
+                  className="truncate text-lg font-medium capitalize text-gray-300 md:text-2xl"
+                  title={image.title}
+                >
                   {image.title}
-                </h2>
+                </h5>
                 <p className="text-sm text-gray-500 md:text-base">
-                  {startImageNumber} / {endImageNumber}
+                  {startImageNumber} &#47; {endImageNumber}
                 </p>
               </div>
               <button
