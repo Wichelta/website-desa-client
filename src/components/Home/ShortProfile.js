@@ -9,7 +9,7 @@ export default function ShortProfile({ refShortProfile, shortProfileDataJson }) 
   }, []);
 
   return (
-    <main className="mx-auto w-full bg-white" ref={refShortProfile}>
+    <section className="mx-auto w-full bg-white" ref={refShortProfile}>
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
         <div className="flex w-full flex-col items-center gap-5 lg:flex-row">
           <div data-aos="zoom-in" data-aos-duration="500" className="w-full py-4 lg:w-1/3">
@@ -30,6 +30,6 @@ export default function ShortProfile({ refShortProfile, shortProfileDataJson }) 
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
