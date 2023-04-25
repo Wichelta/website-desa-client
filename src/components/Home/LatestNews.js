@@ -78,7 +78,7 @@ export default function LatestNews({ newsDataJson }) {
                             </span>
                           </div>
                         </div>
-                        <div className="line-clamp-[8] overflow-hidden text-sm text-gray-700 sm:text-base">
+                        <div className="text-default line-clamp-[8] text-gray-700">
                           {HTMLReactParser(news.description)}
                         </div>
                         <a

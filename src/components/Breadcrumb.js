@@ -28,7 +28,7 @@ export default function Breadcrumb({ links }) {
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 z-20 border border-gray-200 bg-white transition-all duration-300 ${
+      className={`fixed left-0 right-0 top-0 z-20 border-b border-t border-gray-200 bg-white transition-all duration-300 ${
         shouldShowHeader
           ? 'mt-[5.03rem]'
           : 'mt-[4.15rem] -translate-y-full py-1.5 sm:mt-[5.15rem] sm:py-3'

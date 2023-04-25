@@ -32,7 +32,13 @@ export default function CarouselImg({ refShortProfile }) {
         </div>
       ) : (
         <Fade direction="down" duration={800} triggerOnce>
-          <Carousel swipeable={false} showThumbs={false} infiniteLoop={true} autoPlay={true}>
+          <Carousel
+            showStatus={false}
+            swipeable={false}
+            showThumbs={false}
+            infiniteLoop={true}
+            autoPlay={true}
+          >
             {images.map((image, index) => (
               <div key={index}>
                 <img
