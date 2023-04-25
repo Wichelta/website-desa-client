@@ -57,11 +57,11 @@ export default function Header({ shadow }) {
       }`}
     >
       <nav
-        className="mx-auto flex h-16 max-w-screen-xl items-center justify-between p-6 lg:px-6"
+        className="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4 lg:px-6"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1">
+          <a href="/">
             <img src={Logo} alt="Brand Logo" className="w-40 select-none no-underline" />
           </a>
         </div>
@@ -163,9 +163,9 @@ export default function Header({ shadow }) {
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-4 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 lg:px-6">
           <div className="flex h-8 items-center justify-between">
-            <a href="/" className="-m-1">
+            <a href="/">
               <img
                 src={Logo}
                 alt="Brand Logo"
@@ -212,7 +212,7 @@ export default function Header({ shadow }) {
                   {({ open }) => (
                     <>
                       <Disclosure.Button
-                        className={`flex w-full items-center justify-between py-2 pl-3 pr-3.5 text-base font-medium leading-7 no-underline hover:text-blue-primary
+                        className={`flex w-full items-center justify-between py-2 pl-3 pr-3.5 text-left text-base font-medium leading-7 no-underline hover:text-blue-primary
                         ${isActive('/berita-seputar-desa', '/agenda-kegiatan-desa')}`}
                       >
                         Informasi Seputar Desa
