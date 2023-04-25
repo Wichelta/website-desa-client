@@ -34,8 +34,8 @@ export default function Breadcrumb({ links }) {
           : 'mt-[4.15rem] -translate-y-full py-1.5 sm:mt-[5.15rem] sm:py-3'
       }`}
     >
-      <div className="container mx-auto max-w-screen-xl px-3">
-        <ol className="flex list-none items-center justify-center py-4 sm:justify-normal sm:px-4">
+      <div className="container mx-auto max-w-screen-xl">
+        <ol className="flex list-none items-center justify-center px-0 py-4 xs:px-4 sm:justify-normal lg:px-6">
           {links.map((link, index) => (
             <li key={index} className="flex items-center">
               <Link
