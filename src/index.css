@@ -75,6 +75,17 @@ body {
   li {
     @apply text-sm;
   }
+
+  /* custom font size for headings in news card description */
+
+  .text-default h1,
+  .text-default h2,
+  .text-default h3,
+  .text-default h4,
+  .text-default h5,
+  .text-default h6 {
+    @apply text-sm font-normal;
+  }
 }
 
 @media screen(sm) {
@@ -104,6 +115,17 @@ body {
   }
   li {
     @apply text-base;
+  }
+
+  /* custom font size for headings in news card description */
+
+  .text-default h1,
+  .text-default h2,
+  .text-default h3,
+  .text-default h4,
+  .text-default h5,
+  .text-default h6 {
+    @apply text-base font-normal;
   }
 }
 
