@@ -27,7 +27,7 @@ export default function LatestNews({ newsDataJson }) {
 
   return (
     <section className="mx-auto w-full bg-white">
-      <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-10">
+      <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-6">
         <div
           data-aos="fade-up"
           data-aos-duration="500"
@@ -39,7 +39,10 @@ export default function LatestNews({ newsDataJson }) {
         {isLoading ? (
           <LoadingIndicator />
         ) : (
-          <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
+          <div
+            className={`flex flex-col items-center gap-4 lg:flex-row
+          ${displayedNews.length >= 3 ? 'justify-between' : 'justify-center'} `}
+          >
             {!displayedNews.length ? (
               <EmptyState textColor="text-gray-500" />
             ) : (

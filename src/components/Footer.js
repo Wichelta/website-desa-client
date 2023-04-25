@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="bg-blue-secondary py-4 text-white">
       <div data-aos="fade" data-aos-duration="500">
-        <div className="container mx-auto flex max-w-screen-xl flex-wrap justify-between px-6 py-5 lg:px-7">
+        <div className="container mx-auto flex max-w-screen-xl flex-wrap justify-between px-6 py-5">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:gap-0">
             <div className="flex w-full flex-col gap-2 md:mb-0 lg:w-1/2">
               <h3 className="text-lg font-bold text-gray-50 sm:text-xl">Desa BRIliant</h3>
@@ -65,7 +65,7 @@ export default function Footer() {
         </div> */}
         </div>
         <hr className="my-4 border-gray-500" />
-        <div className="container mx-auto mt-4 max-w-screen-xl px-6 py-5 lg:px-7">
+        <div className="container mx-auto mt-4 max-w-screen-xl px-6 py-5">
           <p className="text-center text-sm text-gray-400 sm:text-base">
             &copy; 2023 Desa BRIliant. All Rights Reserved. Created by{' '}
             <a
