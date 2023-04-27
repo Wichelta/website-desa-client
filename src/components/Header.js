@@ -130,7 +130,9 @@ export default function Header({ shadow }) {
                     >
                       <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                         <item.icon
-                          className="h-6 w-6 text-gray-700 transition duration-300 ease-in-out group-hover:text-blue-primary group-hover:ease-in-out"
+                          className={`h-6 w-6 transition duration-300 ease-in-out group-hover:text-blue-primary group-hover:ease-in-out ${isActive(
+                            item.href,
+                          )}`}
                           aria-hidden="true"
                         />
                       </div>
