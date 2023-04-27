@@ -20,7 +20,7 @@ const BackToTop = () => {
 
   return (
     <button
-      className={`fixed bottom-6 right-6 rounded-md bg-black bg-opacity-75 p-2 text-gray-50 sm:p-3 ${
+      className={`fixed bottom-6 right-6 z-10 rounded-md bg-black bg-opacity-75 p-2 text-gray-50 sm:p-3 ${
         showButton ? 'visible' : 'invisible'
       }`}
       onClick={handleClick}

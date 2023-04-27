@@ -41,8 +41,8 @@ export default function ListboxOption({ sortOrder, handleSortOrderChange }) {
 
   return (
     <Listbox value={sortOrder} onChange={handleSortOrderChange}>
-      <div className="relative mt-0.5">
-        <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left text-sm shadow focus:outline-none sm:text-base">
+      <div className="relative">
+        <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left text-sm text-gray-900 shadow-sm focus:outline-none sm:text-base">
           <span className="block truncate">{selectedOption.label}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -57,7 +57,7 @@ export default function ListboxOption({ sortOrder, handleSortOrderChange }) {
           leaveFrom="opacity-100 translate-y-0"
           leaveTo="opacity-0 translate-y-1"
         >
-          <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-40 list-none overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
+          <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-40 list-none overflow-auto rounded-md bg-white py-1 text-base text-gray-900 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
             {sortOptions.map((option) => (
               <SortOption
                 key={option.value}

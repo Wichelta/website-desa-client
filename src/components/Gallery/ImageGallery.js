@@ -11,7 +11,6 @@ const PAGE_SIZE = 6;
 
 export default function ImageGallery({ galleryDataJson }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingShowMore, setIsLoadingShowMore] = useState(true);
   const [displayedImages, setDisplayedImages] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [sortOrder, setSortOrder] = useState('newest');
@@ -31,7 +30,6 @@ export default function ImageGallery({ galleryDataJson }) {
     setDisplayedImages(sortedImages.slice(0, PAGE_SIZE));
     setPagination(1);
     setIsLoading(true);
-    setIsLoadingShowMore(false);
     setTimeout(() => setIsLoading(false), 1000);
     AOS.init();
   }, [sortOrder, galleryDataJson]);
@@ -42,8 +40,6 @@ export default function ImageGallery({ galleryDataJson }) {
     const newImages = galleryDataJson.slice(startIndex, endIndex);
     setDisplayedImages((prevImages) => [...prevImages, ...newImages]);
     setPagination((prevPagination) => prevPagination + 1);
-    setIsLoadingShowMore(true);
-    setTimeout(() => setIsLoadingShowMore(false), 1000);
   };
 
   const handleImageClick = (index) => {
@@ -77,7 +73,7 @@ export default function ImageGallery({ galleryDataJson }) {
   };
 
   return (
-    <main className="mx-auto w-full bg-white">
+    <section className="mx-auto w-full bg-white">
       <div className="container mx-auto mt-[8.25rem] flex max-w-screen-xl flex-col px-4 py-4 sm:mt-[8.5rem] lg:px-6 lg:py-16">
         <div className="flex flex-col gap-4">
           <div className="col-span-3 flex justify-end">
@@ -87,7 +83,7 @@ export default function ImageGallery({ galleryDataJson }) {
             />
           </div>
           {isLoading ? (
-            <LoadingIndicator />
+            <LoadingIndicator height={'h-[30rem]'} />
           ) : (
             <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
               {!displayedImages.length ? (
@@ -120,31 +116,26 @@ export default function ImageGallery({ galleryDataJson }) {
                   </div>
                 ))
               )}
-              {/* {isLoadingShowMore ? (
-                <div className="col-span-full flex -translate-x-0 -translate-y-[40rem] justify-center">
-                  <LoadingIndicator />
-                </div>
-              ) : null} */}
-              {!isLoadingShowMore && displayedImages.length < galleryDataJson.length && (
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="150"
-                  data-aos-duration="500"
-                  data-aos-once="true"
-                  className="col-span-full flex justify-center"
-                >
-                  <button
-                    onClick={handleShowMore}
-                    className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline"
-                  >
-                    Tampilkan Lebih Banyak
-                    <ChevronDownIcon
-                      className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
-                      aria-hidden="true"
-                    />
-                  </button>
-                </div>
-              )}
+            </div>
+          )}
+          {!isLoading && displayedImages.length < galleryDataJson.length && (
+            <div
+              data-aos="fade-up"
+              data-aos-delay="150"
+              data-aos-duration="500"
+              data-aos-once="true"
+              className="col-span-full flex justify-center"
+            >
+              <button
+                onClick={handleShowMore}
+                className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline"
+              >
+                Tampilkan Lebih Banyak
+                <ChevronDownIcon
+                  className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
+                  aria-hidden="true"
+                />
+              </button>
             </div>
           )}
         </div>
@@ -160,6 +151,6 @@ export default function ImageGallery({ galleryDataJson }) {
           />
         )}
       </div>
-    </main>
+    </section>
   );
 }

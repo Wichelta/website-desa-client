@@ -5,6 +5,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import Footer from '../components/Footer';
 import News from '../components/Information/News';
 import newsDataJson from '../json/newsData.json';
+import BackToTop from '../components/BackToTop';
 
 export default function NewsPage() {
   const links = [
@@ -20,7 +21,10 @@ export default function NewsPage() {
       </HelmetProvider>
       <Header />
       <Breadcrumb links={links} />
-      <News newsDataJson={newsDataJson.newsData} />
+      <main>
+        <News newsDataJson={newsDataJson.newsData} />
+        <BackToTop />
+      </main>
       <Footer />
     </>
   );

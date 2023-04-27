@@ -5,6 +5,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Breadcrumb from '../components/Breadcrumb';
 import profileDataJson from '../json/profileData.json';
 import Footer from '../components/Footer';
+import BackToTop from '../components/BackToTop';
 
 export default function ProfilePage() {
   const links = [
@@ -19,9 +20,12 @@ export default function ProfilePage() {
           <title>Profil Desa - BRIliant</title>
         </Helmet>
       </HelmetProvider>
-      <Breadcrumb links={links} />
       <Header />
-      <Profile profileDataJson={profileDataJson.profileData} />
+      <Breadcrumb links={links} />
+      <main>
+        <Profile profileDataJson={profileDataJson.profileData} />
+        <BackToTop />
+      </main>
       <Footer />
     </>
   );

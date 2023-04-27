@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import CarouselImg from '../components/Home/Carousel';
 import Header from '../components/Header';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import LoadingIndicator from '../components/LoadingIndicator';
 import LatestNews from '../components/Home/LatestNews';
 import LatestImageGallery from '../components/Home/LatestImageGallery';
 import BackToTop from '../components/BackToTop';
@@ -12,11 +13,17 @@ import newsDataJson from '../json/newsData.json';
 import shortProfileDataJson from '../json/profileData.json';
 
 export default function LandingPage() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const bodyRef = useRef(document.body);
+  const refShortProfile = useRef(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    bodyRef.current.style.overflowX = 'hidden';
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 1000);
   }, []);
-
-  const refShortProfile = useRef(null);
 
   return (
     <>
@@ -27,16 +34,22 @@ export default function LandingPage() {
       </HelmetProvider>
       <Header shadow="shadow-md" />
       <main>
-        <CarouselImg refShortProfile={refShortProfile} />
-        <ShortProfile
-          refShortProfile={refShortProfile}
-          shortProfileDataJson={shortProfileDataJson.profileData}
-        />
-        <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
-        <LatestNews newsDataJson={newsDataJson.newsData} />
+        {isLoading ? (
+          <LoadingIndicator height={'h-screen'} />
+        ) : (
+          <div>
+            <CarouselImg refShortProfile={refShortProfile} />
+            <ShortProfile
+              refShortProfile={refShortProfile}
+              shortProfileDataJson={shortProfileDataJson.profileData}
+            />
+            <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
+            <LatestNews newsDataJson={newsDataJson.newsData} />
+            <BackToTop />
+          </div>
+        )}
       </main>
-      <Footer />
-      <BackToTop />
+      {!isLoading && <Footer />}
     </>
   );
 }
