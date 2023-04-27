@@ -42,7 +42,7 @@ export default function ListboxOption({ sortOrder, handleSortOrderChange }) {
   return (
     <Listbox value={sortOrder} onChange={handleSortOrderChange}>
       <div className="relative">
-        <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left text-sm text-gray-900 shadow focus:outline-none sm:text-base">
+        <Listbox.Button className="relative w-40 rounded-md border bg-white py-2 pl-3 pr-10 text-left text-sm text-gray-900 shadow-sm focus:outline-none sm:text-base">
           <span className="block truncate">{selectedOption.label}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
