@@ -54,7 +54,7 @@ export default function LatestNews({ newsDataJson }) {
                   data-aos-duration="500"
                   className="w-full lg:max-w-[24.333rem]"
                 >
-                  <div className="flex h-full w-full flex-col justify-center rounded-md bg-white shadow-lg transition duration-300 ease-in-out hover:shadow-2xl">
+                  <div className="flex h-full w-full flex-col justify-center rounded-md bg-white shadow-md transition duration-300 ease-in-out hover:shadow-xl">
                     <div className="relative flex h-full w-full flex-col justify-start rounded-md border md:flex-row md:gap-0 lg:h-[38rem] lg:flex-col lg:gap-5">
                       <div className="relative h-60 w-full object-cover md:h-[21rem] md:w-72 lg:h-60 lg:w-full">
                         <img
