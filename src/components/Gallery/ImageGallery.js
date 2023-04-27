@@ -11,7 +11,6 @@ const PAGE_SIZE = 6;
 
 export default function ImageGallery({ galleryDataJson }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingShowMore, setIsLoadingShowMore] = useState(true);
   const [displayedImages, setDisplayedImages] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [sortOrder, setSortOrder] = useState('newest');
@@ -31,7 +30,6 @@ export default function ImageGallery({ galleryDataJson }) {
     setDisplayedImages(sortedImages.slice(0, PAGE_SIZE));
     setPagination(1);
     setIsLoading(true);
-    setIsLoadingShowMore(false);
     setTimeout(() => setIsLoading(false), 1000);
     AOS.init();
   }, [sortOrder, galleryDataJson]);
@@ -42,8 +40,6 @@ export default function ImageGallery({ galleryDataJson }) {
     const newImages = galleryDataJson.slice(startIndex, endIndex);
     setDisplayedImages((prevImages) => [...prevImages, ...newImages]);
     setPagination((prevPagination) => prevPagination + 1);
-    setIsLoadingShowMore(true);
-    setTimeout(() => setIsLoadingShowMore(false), 1000);
   };
 
   const handleImageClick = (index) => {
@@ -120,11 +116,6 @@ export default function ImageGallery({ galleryDataJson }) {
                   </div>
                 ))
               )}
-              {/* {isLoadingShowMore ? (
-                <div className="col-span-full flex -translate-x-0 -translate-y-[40rem] justify-center">
-                  <LoadingIndicator />
-                </div>
-              ) : null} */}
             </div>
           )}
           {!isLoading && displayedImages.length < galleryDataJson.length && (
