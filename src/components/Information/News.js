@@ -76,7 +76,7 @@ export default function News({ newsDataJson }) {
               <input
                 type="text"
                 placeholder="Cari Judul Berita..."
-                className="w-full rounded-md border bg-white px-4 py-2 pl-9 text-left text-sm text-gray-900 shadow focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-base"
+                className="w-full rounded-md border bg-white px-4 py-2 pl-9 text-left text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none sm:text-base"
                 value={searchQuery}
                 onChange={handleSearchInputChange}
               />
