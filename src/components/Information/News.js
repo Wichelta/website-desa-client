@@ -75,7 +75,7 @@ export default function News({ newsDataJson }) {
                     data-aos-once="true"
                     className="w-full lg:max-w-[24.333rem]"
                   >
-                    <div className="flex h-full w-full flex-col justify-center rounded-md bg-white shadow-lg transition duration-300 ease-in-out hover:shadow-2xl">
+                    <div className="flex h-full w-full flex-col justify-center rounded-md bg-white shadow-md transition duration-300 ease-in-out hover:shadow-xl">
                       <div className="relative flex h-full w-full flex-col justify-start rounded-md border md:flex-row md:gap-0 lg:h-[38rem] lg:flex-col lg:gap-5">
                         <div className="relative h-60 w-full object-cover md:h-[21rem] md:w-72 lg:h-60 lg:w-full">
                           <img
@@ -122,25 +122,25 @@ export default function News({ newsDataJson }) {
                   </div>
                 ))
               )}
-              {!isLoading && displayedNews.length < newsDataJson.length && (
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="150"
-                  data-aos-duration="500"
-                  className="col-span-full flex justify-center"
-                >
-                  <button
-                    onClick={handleShowMore}
-                    className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline"
-                  >
-                    Tampilkan Lebih Banyak
-                    <ChevronDownIcon
-                      className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
-                      aria-hidden="true"
-                    />
-                  </button>
-                </div>
-              )}
+            </div>
+          )}
+          {!isLoading && displayedNews.length < newsDataJson.length && (
+            <div
+              data-aos="fade-up"
+              data-aos-delay="150"
+              data-aos-duration="500"
+              className="col-span-full flex justify-center"
+            >
+              <button
+                onClick={handleShowMore}
+                className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline"
+              >
+                Tampilkan Lebih Banyak
+                <ChevronDownIcon
+                  className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
+                  aria-hidden="true"
+                />
+              </button>
             </div>
           )}
         </div>
