@@ -83,7 +83,7 @@ export default function ImageGallery({ galleryDataJson }) {
             />
           </div>
           {isLoading ? (
-            <LoadingIndicator />
+            <LoadingIndicator height={'h-[30rem]'} />
           ) : (
             <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
               {!displayedImages.length ? (

@@ -87,7 +87,7 @@ export default function News({ newsDataJson }) {
             />
           </div>
           {isLoading ? (
-            <LoadingIndicator />
+            <LoadingIndicator height={'h-[30rem]'} />
           ) : (
             <div className="flex flex-col items-center justify-center gap-4 lg:grid lg:grid-cols-3 lg:gap-6 xl:gap-8">
               {!displayedNews.length ? (
