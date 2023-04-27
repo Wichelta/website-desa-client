@@ -125,26 +125,26 @@ export default function ImageGallery({ galleryDataJson }) {
                   <LoadingIndicator />
                 </div>
               ) : null} */}
-              {!isLoadingShowMore && displayedImages.length < galleryDataJson.length && (
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="150"
-                  data-aos-duration="500"
-                  data-aos-once="true"
-                  className="col-span-full flex justify-center"
-                >
-                  <button
-                    onClick={handleShowMore}
-                    className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline"
-                  >
-                    Tampilkan Lebih Banyak
-                    <ChevronDownIcon
-                      className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
-                      aria-hidden="true"
-                    />
-                  </button>
-                </div>
-              )}
+            </div>
+          )}
+          {!isLoading && displayedImages.length < galleryDataJson.length && (
+            <div
+              data-aos="fade-up"
+              data-aos-delay="150"
+              data-aos-duration="500"
+              data-aos-once="true"
+              className="col-span-full flex justify-center"
+            >
+              <button
+                onClick={handleShowMore}
+                className="group col-span-3 m-auto flex flex-col items-center justify-center text-center text-gray-500 transition duration-300 ease-in-out hover:text-blue-primary hover:underline"
+              >
+                Tampilkan Lebih Banyak
+                <ChevronDownIcon
+                  className="h-5 w-5 translate-y-0 transform transition-transform duration-300 group-hover:translate-y-1"
+                  aria-hidden="true"
+                />
+              </button>
             </div>
           )}
         </div>
