@@ -3,7 +3,12 @@ import LoadingIndicator from '../LoadingIndicator';
 import EmptyState from '../EmptyState';
 import ListboxSortOption from '../ListboxSortOption';
 import HTMLReactParser from 'html-react-parser';
-import { CalendarDaysIcon, ArrowLongRightIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
+import {
+  CalendarDaysIcon,
+  ArrowLongRightIcon,
+  ChevronDownIcon,
+  MagnifyingGlassIcon,
+} from '@heroicons/react/20/solid';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -14,6 +19,7 @@ export default function News({ newsDataJson }) {
   const [displayedNews, setDisplayedNews] = useState([]);
   const [pagination, setPagination] = useState(1);
   const [sortOrder, setSortOrder] = useState('newest');
+  const [searchQuery, setsearchQuery] = useState('');
 
   useEffect(() => {
     const sortedNews = newsDataJson.sort((a, b) => {
@@ -23,12 +29,17 @@ export default function News({ newsDataJson }) {
         return new Date(b.dateCreated) - new Date(a.dateCreated);
       }
     });
-    setDisplayedNews(sortedNews.slice(0, PAGE_SIZE));
+
+    let filteredNews = sortedNews.filter((news) =>
+      news.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+
+    setDisplayedNews(filteredNews.slice(0, PAGE_SIZE));
     setPagination(1);
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 1000);
     AOS.init();
-  }, [sortOrder, newsDataJson]);
+  }, [sortOrder, newsDataJson, searchQuery]);
 
   const formatDate = (date) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -49,11 +60,27 @@ export default function News({ newsDataJson }) {
     setSortOrder(order);
   };
 
+  const handleSearchInputChange = (e) => {
+    setsearchQuery(e.target.value);
+  };
+
   return (
     <section className="mx-auto w-full bg-white">
       <div className="container mx-auto mt-[8.25rem] flex max-w-screen-xl flex-col px-4 py-4 sm:mt-[8.5rem] lg:px-6 lg:py-16">
         <div className="flex flex-col gap-4">
-          <div className="col-span-3 flex justify-end">
+          <div className="mt-0.5 flex flex-col items-end justify-end gap-2 xs:flex-row">
+            <div className="relative w-full xs:w-max">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <MagnifyingGlassIcon className="h-4 w-4 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                placeholder="Cari Judul Berita..."
+                className="w-full rounded-md border bg-white px-4 py-2 pl-9 text-left text-sm text-gray-900 shadow focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-base"
+                value={searchQuery}
+                onChange={handleSearchInputChange}
+              />
+            </div>
             <ListboxSortOption
               sortOrder={sortOrder}
               handleSortOrderChange={handleSortOrderChange}
@@ -124,7 +151,7 @@ export default function News({ newsDataJson }) {
               )}
             </div>
           )}
-          {!isLoading && displayedNews.length < newsDataJson.length && (
+          {!isLoading && !searchQuery && displayedNews.length < newsDataJson.length && (
             <div
               data-aos="fade-up"
               data-aos-delay="150"
