@@ -12,7 +12,7 @@ export default function ShortProfile({ refShortProfile, shortProfileDataJson }) 
     <section className="mx-auto w-full bg-white" ref={refShortProfile}>
       <div className="container mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:py-16 lg:px-6">
         <div className="flex w-full flex-col items-center gap-5 lg:flex-row">
-          <div data-aos="zoom-in" data-aos-duration="500" className="w-full py-4 lg:w-1/3">
+          <div data-aos="fade-right" data-aos-duration="500" className="w-full py-4 lg:w-1/3">
             <img
               src={shortProfileDataJson.src}
               alt="Logo desa"
@@ -20,7 +20,7 @@ export default function ShortProfile({ refShortProfile, shortProfileDataJson }) 
             />
           </div>
           <div
-            data-aos="zoom-in"
+            data-aos="fade-left"
             data-aos-duration="500"
             className="flex w-full flex-col gap-4 py-4 lg:w-2/3"
           >
