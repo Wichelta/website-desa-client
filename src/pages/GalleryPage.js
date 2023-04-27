@@ -22,9 +22,11 @@ export default function GalleryPage() {
       </HelmetProvider>
       <Header />
       <Breadcrumb links={links} />
-      <ImageGallery galleryDataJson={galleryDataJson.galleryData} />
+      <main>
+        <ImageGallery galleryDataJson={galleryDataJson.galleryData} />
+        <BackToTop />
+      </main>
       <Footer />
-      <BackToTop />
     </>
   );
 }
