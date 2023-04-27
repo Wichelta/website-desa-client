@@ -34,9 +34,9 @@ export default function LandingPage() {
         />
         <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
         <LatestNews newsDataJson={newsDataJson.newsData} />
+        <BackToTop />
       </main>
       <Footer />
-      <BackToTop />
     </>
   );
 }
