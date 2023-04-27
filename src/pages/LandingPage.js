@@ -12,11 +12,13 @@ import newsDataJson from '../json/newsData.json';
 import shortProfileDataJson from '../json/profileData.json';
 
 export default function LandingPage() {
+  const bodyRef = useRef(document.body);
+  const refShortProfile = useRef(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    bodyRef.current.style.overflowX = 'hidden';
   }, []);
-
-  const refShortProfile = useRef(null);
 
   return (
     <>
