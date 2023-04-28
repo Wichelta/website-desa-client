@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 import ShortProfile from '../components/Home/ShortProfile';
 import galleryDataJson from '../json/galleryData.json';
 import newsDataJson from '../json/newsData.json';
-import shortProfileDataJson from '../json/profileData.json';
+import profileDataJson from '../json/profileData.json';
 
 export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +39,7 @@ export default function LandingPage() {
             <CarouselImg refShortProfile={refShortProfile} />
             <ShortProfile
               refShortProfile={refShortProfile}
-              shortProfileDataJson={shortProfileDataJson.profileData}
+              profileDataJson={profileDataJson.profileData}
             />
             <LatestImageGallery galleryDataJson={galleryDataJson.galleryData} />
             <LatestNews newsDataJson={newsDataJson.newsData} />
