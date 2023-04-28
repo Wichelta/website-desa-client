@@ -52,7 +52,7 @@ export default function Header({ shadow }) {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-30 border-gray-200 bg-white py-2 ${shadow} transition-all duration-300 ${
+      className={`fixed left-0 right-0 top-0 z-30 bg-white py-2 ${shadow} transition-all duration-300 ${
         shouldShowHeader ? '' : '-translate-y-full shadow-none'
       }`}
     >
