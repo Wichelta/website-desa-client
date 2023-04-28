@@ -15,12 +15,10 @@ import shortProfileDataJson from '../json/profileData.json';
 export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
 
-  const bodyRef = useRef(document.body);
   const refShortProfile = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    bodyRef.current.style.overflowX = 'hidden';
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 1000);
   }, []);
